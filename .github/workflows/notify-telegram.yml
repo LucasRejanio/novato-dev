@@ -1,7 +1,8 @@
 name: Notify Telegram
 
 on: 
-  pull_request: [opened]
+  pull_request:
+    types: [opened]
 
 jobs:
   build:
