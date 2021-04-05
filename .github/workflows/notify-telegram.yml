@@ -11,6 +11,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - uses: 8BitJonny/gh-get-current-pr@1.0.1
+        id: get-pull-request
+        with:
+          github-token: ${{ github.token }}
+          
+      - name: Get info of pull request
+        run: |
+          echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV \
+          && echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
+          && echo "PR_REPO_URL=$(echo $pr | jq '.head.repo.html_url'| sed 's/"//g')" >> $GITHUB_ENV \
+          && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
+          && echo "PR_USER_URL=$(echo $pr | jq '.user.html_url'| sed 's/"//g')" >> $GITHUB_ENV
+        env:
+          pr: ${{ steps.get-pull-request.outputs.pr }}
+      
       - uses: actions/checkout@master
       - name: Send message telegram
         uses: appleboy/telegram-action@master
@@ -18,4 +33,4 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            Test notify telegram channel
+            New pull request <${{ env.PR_URL }} | #${{ env.PR_NUMBER }}> in the repository <${{ env.PR_REPO_URL }} | chatbot-telegram> by the user: <${{ env.PR_USER_URL }} | ${{ env.PR_USER }}>
