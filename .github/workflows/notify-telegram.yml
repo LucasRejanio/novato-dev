@@ -28,12 +28,14 @@ jobs:
         env:
           pr: ${{ steps.get-pull-request.outputs.pr }}
       
-      - uses: actions/checkout@master
-      - name: Send message telegram
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            New pull request in the repository chatbot-telegram by the user: ${{ env.PR_USER }}
-            pull request: ${{ env.PR_URL }}
+      - name: echo
+        run: echo $PR_URL
+#       - uses: actions/checkout@master
+#       - name: Send message telegram
+#         uses: appleboy/telegram-action@master
+#         with:
+#           to: ${{ secrets.TELEGRAM_TO }}
+#           token: ${{ secrets.TELEGRAM_TOKEN }}
+#           message: |
+#             New pull request in the repository chatbot-telegram by the user: ${{ env.PR_USER }}
+#             pull request: ${{ env.PR_URL }}
