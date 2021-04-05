@@ -10,11 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      
-      - uses: jwalton/gh-find-current-pr@v1
-        id: get-pull-request
+    steps:     
+      - uses: actions/checkout@v1
+      - uses: 8BitJonny/gh-get-current-pr@v1
+        id: PR
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get branch name
         run: |
@@ -24,7 +25,10 @@ jobs:
 
       - name: Echo branch
         run: |
-          echo $BRANCH_NAME
+          echo $BRANCH_NAME \
+          echo "${prNumber} "
+        env:
+          prNumber: ${{ steps.PR.outputs.number }}
 #       - uses: actions/checkout@master
 #       - name: Send message telegram
 #         uses: appleboy/telegram-action@master
