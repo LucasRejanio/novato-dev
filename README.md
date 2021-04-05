@@ -3,7 +3,7 @@
 [![build](https://img.shields.io/wercker/build/wercker/go-wercker-api.svg)](https://github.com/LucasRejanio/chatbot-telegram/actions)
 
 # Chatbot Telegram
-Chatbot with the Telegram API and Python
+Chatbot with the Telegram API and Python teste
 
 #### Actions Notify Telegram
 
