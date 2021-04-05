@@ -35,4 +35,4 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            New pull request <${{ env.PR_URL }} | #${{ env.PR_NUMBER }}> in the repository <${{ env.PR_REPO_URL }} | chatbot-telegram> by the user: <${{ env.PR_USER_URL }} | ${{ env.PR_USER }}>
+            <https://github.com/${{github.repository}}/actions/runs/${{github.run_id}} | New> pull request <${{ env.PR_URL }} | #${{ env.PR_NUMBER }}> in the repository <${{ env.PR_REPO_URL }} | chatbot-telegram> by the user: <${{ env.PR_USER_URL }} | ${{ env.PR_USER }}>
