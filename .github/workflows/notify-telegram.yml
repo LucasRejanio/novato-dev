@@ -17,19 +17,16 @@ jobs:
         id: get-pull-request
         with:
           github-token: ${{ github.token }}
-          
-      - name: Get info of pull request
+
+      - name: Get branch name
         run: |
-          echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV \
-          && echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
-          && echo "PR_REPO_URL=$(echo $pr | jq '.head.repo.html_url'| sed 's/"//g')" >> $GITHUB_ENV \
-          && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
-          && echo "PR_USER_URL=$(echo $pr | jq '.user.html_url'| sed 's/"//g')" >> $GITHUB_ENV
+          echo "BRANCH_NAME=$(echo $pr | jq '.head.ref' | sed 's/"//g')" >> $GITHUB_ENV
         env:
           pr: ${{ steps.get-pull-request.outputs.pr }}
-      
-      - name: echo
-        run: echo $PR_NUMBER
+
+      - name: Echo branch
+        run: |
+          echo $BRANCH_NAME
 #       - uses: actions/checkout@master
 #       - name: Send message telegram
 #         uses: appleboy/telegram-action@master
