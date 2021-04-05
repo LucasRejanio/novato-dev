@@ -3,19 +3,18 @@ name: Notify Telegram
 on:
   push:
     branches: [ main ]
-#    pull_request:
-#      types: [opened]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  up:
+    runs-on: ubuntu-20.04
 
-    steps:     
+    steps:
       - uses: actions/checkout@v2
-      - uses: 8BitJonny/gh-get-current-pr@v1
-        id: PR
+
+      - uses: 8BitJonny/gh-get-current-pr@1.0.1
+        id: get-pull-request
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
 
       - name: Get branch name
         run: |
@@ -25,10 +24,17 @@ jobs:
 
       - name: Echo branch
         run: |
-          echo $BRANCH_NAME \
-          echo "${prNumber} "
-        env:
-          prNumber: ${{ steps.PR.outputs.number }}
+          echo $BRANCH_NAME
+      - name: Validates stack according to branch name
+        run: |
+          if [[ "$BRANCH_NAME" == *"prod-virginia"* ]]; then
+              echo "STACK=$(echo prod-virginia)" >> $GITHUB_ENV
+          elif [[ "$BRANCH_NAME" == *"prod-ohio"* ]]; then
+              echo "STACK=$(echo prod-ohio)" >> $GITHUB_ENV
+          else
+              echo There is no production account in this pull request
+          fi
+
 #       - uses: actions/checkout@master
 #       - name: Send message telegram
 #         uses: appleboy/telegram-action@master
