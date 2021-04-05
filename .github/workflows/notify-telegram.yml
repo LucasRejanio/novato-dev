@@ -10,28 +10,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - uses: kceb/pull-request-url-action@v1
+        id: pr-url
 
-#       - uses: 8BitJonny/gh-get-current-pr@1.0.1
-#         id: get-pull-request
+      - run: echo "${{ steps.pr-url.outputs.url }}"
+
+#       - uses: actions/checkout@master
+#       - name: Send message telegram
+#         uses: appleboy/telegram-action@master
 #         with:
-#           github-token: ${{ github.token }}
-          
-#       - name: Get info of pull request
-#         run: |
-#           echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV \
-#           && echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
-#           && echo "PR_REPO_URL=$(echo $pr | jq '.head.repo.html_url'| sed 's/"//g')" >> $GITHUB_ENV \
-#           && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
-#           && echo "PR_USER_URL=$(echo $pr | jq '.user.html_url'| sed 's/"//g')" >> $GITHUB_ENV
-#         env:
-#           pr: ${{ steps.get-pull-request.outputs.pr }}
-
-      - uses: actions/checkout@master
-      - name: Send message telegram
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            New pull request ${{ github.event.number }} in the repository chatbot-telegram by the user: LucasRejanio
-            pull request: teste
+#           to: ${{ secrets.TELEGRAM_TO }}
+#           token: ${{ secrets.TELEGRAM_TOKEN }}
+#           message: |
+#             New pull request ${{ github.event.number }} in the repository chatbot-telegram by the user: LucasRejanio
+#             pull request: teste
