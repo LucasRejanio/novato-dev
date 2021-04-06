@@ -11,14 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: echo ${{ github.event.pull_request }}
-
-#       - uses: actions/checkout@master
-#       - name: Send message telegram
-#         uses: appleboy/telegram-action@master
-#         with:
-#           to: ${{ secrets.TELEGRAM_TO }}
-#           token: ${{ secrets.TELEGRAM_TOKEN }}
-#           message: |
-#             New pull request ${{ github.event.number }} in the repository chatbot-telegram by the user: ${{ github.event.pull_request.user.login }}
-#             pull request: teste
+      - uses: actions/checkout@master
+      - name: Send message telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            New pull request #${{ github.event.number }} in the repository chatbot-telegram by the user: ${{ github.event.pull_request.user.login }}
