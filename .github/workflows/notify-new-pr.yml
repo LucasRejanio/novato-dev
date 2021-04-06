@@ -1,11 +1,11 @@
 name: Notify Telegram
 
 on:
-  pull_request
-#     types: [opened]
+  pull_request:
+    types: [opened]
 
 jobs:
-  up:
+  notify-new-pr:
     runs-on: ubuntu-20.04
 
     steps:
