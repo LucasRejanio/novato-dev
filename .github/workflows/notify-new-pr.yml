@@ -18,4 +18,4 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            New pull request #${{ github.event.number }} in the chatbot-telegram repository by the user: ${{ github.event.pull_request.user.login }}
+            New pull request #${{ github.event.number }} in the novato-dev repository by the user: ${{ github.event.pull_request.user.login }}
