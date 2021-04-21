@@ -1,8 +1,8 @@
 name: Pylint
 
 on:
-  pull_request:
-    types: [opened]
+  pull_request
+  #   types: [opened]
 
 jobs:
   pylint:
