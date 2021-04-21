@@ -1,5 +1,5 @@
 from telegram import Update, ForceReply
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import CallbackContext
 
 def start(update: Update, context: CallbackContext) -> None:
     user = update.effective_user

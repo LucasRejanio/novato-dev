@@ -11,6 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Python Linter
+        uses: sunnysid3up/python-linter@master
+        with:
+          source: "src"
+          mypy-options: "--ignore-missing-imports --show-error-codes"
+          pylint-options: "--rcfile=.pylintrc"
+
       - uses: actions/checkout@master
       - name: Send message telegram
         uses: appleboy/telegram-action@master
