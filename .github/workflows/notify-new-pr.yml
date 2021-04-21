@@ -1,11 +1,11 @@
-name: Test new pull request
+name: Pylint
 
 on:
   pull_request:
     types: [opened]
 
 jobs:
-  test-new-pull-request:
+  pylint:
     runs-on: ubuntu-20.04
 
     steps:
