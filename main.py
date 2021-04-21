@@ -1,9 +1,7 @@
 #!/usr/bin/env python
-# pylint: disable=C0116
 
 import logging
 
-from telegram import Update
 from telegram.ext import Updater, CommandHandler
 
 from modules.commands.main import start, help_command
