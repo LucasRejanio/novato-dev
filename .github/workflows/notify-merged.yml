@@ -1,11 +1,11 @@
-name: Notify merged
+name: Notify merge
 
 on:
   pull_request:
     types: [closed]
 
 jobs:
-  notify-merged:
+  merge:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-20.04
 

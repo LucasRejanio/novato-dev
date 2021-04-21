@@ -20,7 +20,7 @@ def main() -> None:
     # token = arquivo.read()
     # arquivo.close()
 
-    updater = Updater("TOKEN")
+    updater = Updater("1794849435:AAHpeZLTC6vVCaWtfb8oxMos9Z3AclBgv6Q")
 
     # Criamdo o mensageiro
     dispatcher = updater.dispatcher

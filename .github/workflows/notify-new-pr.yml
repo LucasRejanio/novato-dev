@@ -2,7 +2,7 @@ name: Pylint
 
 on:
   pull_request
-  #   types: [opened]
+    types: [opened]
 
 jobs:
   pylint:
@@ -11,20 +11,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: Install requirements
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Lint with pylint
+      - name: Run pylint
         run: |
           find ./ -type f -name "*.py" -not -path "./venv/*" | xargs pylint
 
-      # - uses: actions/checkout@master
-      # - name: Send message telegram
-      #   uses: appleboy/telegram-action@master
-      #   with:
-      #     to: ${{ secrets.TELEGRAM_TO }}
-      #     token: ${{ secrets.TELEGRAM_TOKEN }}
-      #     message: |
-      #       New pull request #${{ github.event.number }} in the novato-dev repository by the user: ${{ github.event.pull_request.user.login }}
+      - uses: actions/checkout@master
+      - name: Send message telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            New pull request #${{ github.event.number }} in the novato-dev repository by the user: ${{ github.event.pull_request.user.login }}
