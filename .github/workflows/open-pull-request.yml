@@ -1,11 +1,11 @@
-name: Notify new pr
+name: Open pull request
 
 on:
   pull_request:
     types: [opened]
 
 jobs:
-  notify-new-pr:
+  open-pull-request:
     runs-on: ubuntu-20.04
 
     steps:

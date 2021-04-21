@@ -1,11 +1,11 @@
-name: Notify merged
+name: Merge pull request
 
 on:
   pull_request:
     types: [closed]
 
 jobs:
-  notify-merged:
+  merge-pull-request:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-20.04
 
@@ -20,7 +20,7 @@ jobs:
     - name: Get info of pull request
       run: |
         echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
-        && && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
+        && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
         && echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV
       env:
         pr: ${{ steps.get-pull-request.outputs.pr }}
