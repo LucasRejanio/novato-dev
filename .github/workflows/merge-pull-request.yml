@@ -1,11 +1,11 @@
-name: Merge
+name: Merge pull request
 
 on:
   pull_request:
     types: [closed]
 
 jobs:
-  merge:
+  merge-pull-request:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-20.04
 

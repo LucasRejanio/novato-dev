@@ -11,5 +11,4 @@ def start(update: Update, _: CallbackContext) -> None:
 
 
 def help_command(update: Update, _: CallbackContext) -> None:
-    """Send a message when the command /help is issued."""
     update.message.reply_text('Help!')
