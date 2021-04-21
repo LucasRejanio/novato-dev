@@ -1,28 +1,30 @@
-name: Notify new pr
+name: Test new pull request
 
 on:
   pull_request:
     types: [opened]
 
 jobs:
-  notify-new-pr:
+  test-new-pull-request:
     runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Python Linter
-        uses: sunnysid3up/python-linter@master
-        with:
-          source: "src"
-          mypy-options: "--ignore-missing-imports --show-error-codes"
-          pylint-options: "--rcfile=.pylintrc"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - uses: actions/checkout@master
-      - name: Send message telegram
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            New pull request #${{ github.event.number }} in the novato-dev repository by the user: ${{ github.event.pull_request.user.login }}
+      - name: Lint with pylint
+        run: |
+          find ./ -type f -name "*.py" -not -path "./venv/*" | xargs pylint
+
+      # - uses: actions/checkout@master
+      # - name: Send message telegram
+      #   uses: appleboy/telegram-action@master
+      #   with:
+      #     to: ${{ secrets.TELEGRAM_TO }}
+      #     token: ${{ secrets.TELEGRAM_TOKEN }}
+      #     message: |
+      #       New pull request #${{ github.event.number }} in the novato-dev repository by the user: ${{ github.event.pull_request.user.login }}
