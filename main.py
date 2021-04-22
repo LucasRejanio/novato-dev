@@ -4,7 +4,7 @@ import logging
 
 from telegram.ext import Updater, CommandHandler
 
-from modules.commands.main import start, help_command
+from modulos.comandos.main import start, help_command
 
 # Habilitar log
 logging.basicConfig(
