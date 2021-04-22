@@ -1,0 +1,34 @@
+COMANDOS = {
+    "if/else":[
+        "",
+        {
+            "python":[],
+            "java":[],
+            "javascript":[],
+        }
+    ],
+    "do/while":[
+        "",
+        {
+            "python":[],
+            "java":[],
+            "javascript":[],
+        }
+    ],
+    "variaveis":[
+        "",
+        {
+            "python":[],
+            "java":[],
+            "javascript":[],
+        }
+    ],
+    "operador lógico":[
+        "",
+        {
+            "python":[],
+            "java":[],
+            "javascript":[],
+        }
+    ],
+}
