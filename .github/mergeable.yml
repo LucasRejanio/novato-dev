@@ -1,6 +1,17 @@
 version: 2
 mergeable:
   - when: pull_request.*
+    name: 'Uma descrição relevante foi fornecida'
+    validate:
+      - do: description
+        no_empty:
+          enabled: true
+    fail:
+      - do: comment
+        payload:
+          body: >
+            A descrição não pode ficar vazia. Forneça detalhes sobre o quê foi alterado, por quê foi alterado e como foi alterado.
+  - when: pull_request.*
     name: 'A alteração foi categorizada'
     validate:
       - do: label
