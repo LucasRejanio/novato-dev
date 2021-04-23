@@ -45,7 +45,7 @@ jobs:
           New Release NovatoBot v${{ env.PR_NUMBER }}
         draft: false
         prerelease: false
-        
+    
     # - uses: actions/checkout@master
     # - name: Send message telegram
     #   uses: appleboy/telegram-action@master
