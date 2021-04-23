@@ -1,0 +1,13 @@
+version: 2
+mergeable:
+  - when: pull_request.*
+    name: 'A alteração foi categorizada'
+    validate:
+      - do: label
+        must_include:
+          regex: feature|bug|documentation|release
+    fail:
+      - do: comment
+        payload:
+          body: >
+            Toda alteração precisa ser categorizada. Adicione uma das labels obrigatórias: feature, bug, documentation ou release.

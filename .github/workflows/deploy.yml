@@ -5,12 +5,25 @@ on:
     branchs: [ lr-teste-release ]
 
 jobs:
-  release:
+  deploy:
     name: Create Release
     runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
+
+    - uses: 8BitJonny/gh-get-current-pr@1.0.1
+      id: get-pull-request
+      with:
+        github-token: ${{ github.token }}
+    
+    - name: Get info of pull request
+      run: |
+        echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV \
+        echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
+        && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
+      env:
+        pr: ${{ steps.get-pull-request.outputs.pr }}
 
     - name: Set timezone America/Sao_Paulo
       run: |
@@ -19,19 +32,6 @@ jobs:
     - name: Set $DATE_NOW
       run: |
         echo "DATE_NOW=$(date +'%d-%m-%Y.%H:%M')" >> $GITHUB_ENV
-    
-    - uses: 8BitJonny/gh-get-current-pr@1.0.1
-      id: get-pull-request
-      with:
-        github-token: ${{ github.token }}
-    
-    - name: Get info of pull request
-      run: |
-        echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
-        && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
-        && echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV
-      env:
-        pr: ${{ steps.get-pull-request.outputs.pr }}
 
     - name: Create Release
       id: create_release
@@ -42,7 +42,12 @@ jobs:
         tag_name: v${{ env.PR_NUMBER }}
         release_name: Release-${{ env.DATE_NOW }}
         body: |
-          New Release NovatoBot v${{ env.PR_NUMBER }}
+          Release NovatoBot v${{ env.PR_NUMBER }}.
+          1. Data: ${{ env.DATE_NOW }}
+          2. Objetivo
+            Esse Release tem como objetivo realizar melhorias no projeto novato-dev. visamos impactos,
+            melhorias e inovação. Para saber mais clique no link abaixo:
+            Release: ${{ env.PR_URL }}
         draft: false
         prerelease: false
     
