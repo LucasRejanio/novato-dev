@@ -12,31 +12,36 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: 8BitJonny/gh-get-current-pr@1.0.1
-      id: get-pull-request
-      with:
-        github-token: ${{ github.token }}
-    
-    - name: Get info of pull request
+    - name: Set date time
       run: |
-        echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
-        && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
-        && echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV
-      env:
-        pr: ${{ steps.get-pull-request.outputs.pr }}
+        timedatectl set-timezone America/Sao_Paulo \
+        && echo date "%d/%m/%y"
 
-    - name: Create Release
-      id: create_release
-      uses: zendesk/action-create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ github.token  }}
-      with:
-        tag_name: v${{ env.PR_NUMBER }}
-        release_name: Release ${{ github.ref }}
-        body: |
-          New Release NovatoBot v${{ env.PR_NUMBER }}
-        draft: false
-        prerelease: false
+    # - uses: 8BitJonny/gh-get-current-pr@1.0.1
+    #   id: get-pull-request
+    #   with:
+    #     github-token: ${{ github.token }}
+    
+    # - name: Get info of pull request
+    #   run: |
+    #     echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
+    #     && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
+    #     && echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV
+    #   env:
+    #     pr: ${{ steps.get-pull-request.outputs.pr }}
+
+    # - name: Create Release
+    #   id: create_release
+    #   uses: zendesk/action-create-release@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ github.token  }}
+    #   with:
+    #     tag_name: v${{ env.PR_NUMBER }}
+    #     release_name: Release ${{ github.ref }}
+    #     body: |
+    #       New Release NovatoBot v${{ env.PR_NUMBER }}
+    #     draft: false
+    #     prerelease: false
         
     # - uses: actions/checkout@master
     # - name: Send message telegram
