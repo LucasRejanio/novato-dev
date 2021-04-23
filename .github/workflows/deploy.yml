@@ -1,15 +1,29 @@
-name: Create Release
+name: Deploy
 
 on:
-  pull_request
+  push:
+    branchs: [ lr-teste-release ]
 
 jobs:
-  build:
+  release:
     name: Create Release
     runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
+
+    - uses: 8BitJonny/gh-get-current-pr@1.0.1
+      id: get-pull-request
+      with:
+        github-token: ${{ github.token }}
+    
+    - name: Get info of pull request
+      run: |
+        echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
+        && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
+        && echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV
+      env:
+        pr: ${{ steps.get-pull-request.outputs.pr }}
 
     - name: Create Release
       id: create_release
@@ -17,11 +31,21 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token  }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: ${{ github.ref }}
+        tag_name: v${{ env.PR_NUMBER }}
+        release_name: Release ${{ github.ref }}
         body: |
-          Changes in this Release
-          - First Change
-          - Second Change
+          New Release NovatoBot v$BODY_RELEASE
         draft: false
         prerelease: false
+      env:
+        BODY_RELEASE: ${{ env.PR_NUMBER }}
+        
+    # - uses: actions/checkout@master
+    # - name: Send message telegram
+    #   uses: appleboy/telegram-action@master
+    #   with:
+    #     to: ${{ secrets.TELEGRAM_TO }}
+    #     token: ${{ secrets.TELEGRAM_TOKEN }}
+    #     message: |
+    #       New release #${{ env.PR_NUMBER }} in the novato-dev repository by the user: ${{ env.PR_USER }}
+    #       pull request: ${{ env.PR_URL }}
