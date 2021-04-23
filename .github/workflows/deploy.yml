@@ -12,42 +12,39 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set date time
+    - name: Set timezone America/Sao_Paulo
       run: |
-        sudo timedatectl set-timezone America/Sao_Paulo \
-        date "+%d/%m/%y"
+        sudo timedatectl set-timezone America/Sao_Paulo
 
-
-# && echo "DATE=$( date "%d/%m/%y )" >> $GITHUB_ENV
+    - name: Set $TIME_NOW
+      run: |
+        echo "TIME_NOW=$(date +'%H.%M')" >> $GITHUB_ENV
     
-    # - name: Echo DATE
-    #   run: echo $DATE
-  
-    # - uses: 8BitJonny/gh-get-current-pr@1.0.1
-    #   id: get-pull-request
-    #   with:
-    #     github-token: ${{ github.token }}
+    - uses: 8BitJonny/gh-get-current-pr@1.0.1
+      id: get-pull-request
+      with:
+        github-token: ${{ github.token }}
     
-    # - name: Get info of pull request
-    #   run: |
-    #     echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
-    #     && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
-    #     && echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV
-    #   env:
-    #     pr: ${{ steps.get-pull-request.outputs.pr }}
+    - name: Get info of pull request
+      run: |
+        echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
+        && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
+        && echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV
+      env:
+        pr: ${{ steps.get-pull-request.outputs.pr }}
 
-    # - name: Create Release
-    #   id: create_release
-    #   uses: zendesk/action-create-release@v1
-    #   env:
-    #     GITHUB_TOKEN: ${{ github.token  }}
-    #   with:
-    #     tag_name: v${{ env.PR_NUMBER }}
-    #     release_name: Release ${{ github.ref }}
-    #     body: |
-    #       New Release NovatoBot v${{ env.PR_NUMBER }}
-    #     draft: false
-    #     prerelease: false
+    - name: Create Release
+      id: create_release
+      uses: zendesk/action-create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token  }}
+      with:
+        tag_name: v${{ env.PR_NUMBER }}
+        release_name: Release-${{ env.TIME_NOW }}
+        body: |
+          New Release NovatoBot v${{ env.PR_NUMBER }}
+        draft: false
+        prerelease: false
         
     # - uses: actions/checkout@master
     # - name: Send message telegram
