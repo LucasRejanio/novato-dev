@@ -43,11 +43,11 @@ jobs:
         release_name: Release-${{ env.DATE_NOW }}
         body: |
           Release NovatoBot v${{ env.PR_NUMBER }}
-            1. Data: ${{ env.DATE_NOW }}
-            2. Objetivo
-              Esse Release tem como objetivo realizar melhorias no projeto novato-dev. visamos impactos,
-              melhorias e inovação. Para saber mais clique no link abaixo:
-              Release: ${{ env.PR_URL }}
+          1. Data: ${{ env.DATE_NOW }}
+          2. Objetivo
+            Esse Release tem como objetivo realizar melhorias no projeto novato-dev. visamos impactos,
+            melhorias e inovação. Para saber mais clique no link abaixo:
+            Release: ${{ env.PR_URL }}
         draft: false
         prerelease: false
     
