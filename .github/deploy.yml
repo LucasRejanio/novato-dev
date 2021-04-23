@@ -1,8 +1,7 @@
 name: Create Release
 
 on:
-  push:
-    branches: [ release-test ]
+  pull_request
 
 jobs:
   build:
