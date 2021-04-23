@@ -18,7 +18,7 @@ jobs:
 
     - name: Set $TIME_NOW
       run: |
-        echo "TIME_NOW=$(date +'%H.%M')" >> $GITHUB_ENV
+        echo "TIME_NOW=$(date +'%m-%d:%H.%M')" >> $GITHUB_ENV
     
     - uses: 8BitJonny/gh-get-current-pr@1.0.1
       id: get-pull-request
