@@ -20,7 +20,7 @@ jobs:
     - name: Get info of pull request
       run: |
         echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV \
-        echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
+        && echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
         && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
       env:
         pr: ${{ steps.get-pull-request.outputs.pr }}
@@ -42,7 +42,7 @@ jobs:
         tag_name: v${{ env.PR_NUMBER }}
         release_name: Release-${{ env.DATE_NOW }}
         body: |
-          Release NovatoBot v${{ env.PR_NUMBER }}
+          Release NovatoBot v${{ env.PR_NUMBER }}.
           1. Data: ${{ env.DATE_NOW }}
           2. Objetivo
             Esse Release tem como objetivo realizar melhorias no projeto novato-dev. visamos impactos,
