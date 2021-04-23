@@ -34,11 +34,9 @@ jobs:
         tag_name: v${{ env.PR_NUMBER }}
         release_name: Release ${{ github.ref }}
         body: |
-          New Release NovatoBot v$BODY_RELEASE
+          New Release NovatoBot v${{ env.PR_NUMBER }}
         draft: false
         prerelease: false
-      env:
-        BODY_RELEASE: ${{ env.PR_NUMBER }}
         
     # - uses: actions/checkout@master
     # - name: Send message telegram
