@@ -14,7 +14,7 @@ jobs:
 
     - name: Set date time
       run: |
-        timedatectl set-timezone America/Sao_Paulo \
+        sudo timedatectl set-timezone America/Sao_Paulo \
         && echo date "%d/%m/%y"
 
     # - uses: 8BitJonny/gh-get-current-pr@1.0.1
