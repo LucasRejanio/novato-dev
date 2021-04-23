@@ -1,8 +1,8 @@
+name: Create Release
+
 on:
   push:
-    branch: [release-test]
-
-name: Create Release
+    branch: release-test
 
 jobs:
   build:
