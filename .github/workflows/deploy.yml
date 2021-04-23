@@ -15,7 +15,7 @@ jobs:
     - name: Set date time
       run: |
         sudo timedatectl set-timezone America/Sao_Paulo \
-        && echo "DATE=$(echo "date "%d/%m/%y"" )" >> $GITHUB_ENV
+        && echo "DATE=$( date "%d/%m/%y )" >> $GITHUB_ENV
     
     - name: Echo DATE
       run: echo $DATE
