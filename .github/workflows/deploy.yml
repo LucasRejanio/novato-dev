@@ -21,6 +21,7 @@ jobs:
         echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV \
         && echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
         && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
+        && echo "PR_RELEASE_LABEL=$(echo $pr | jq '.labels[] | select(.name == "release")' | wc -l )" >> $GITHUB_ENV
       env:
         pr: ${{ steps.get-pull-request.outputs.pr }}
 
@@ -32,7 +33,7 @@ jobs:
     - name: Get date-time
       run: |
         echo "DATE_NOW=$(date +'%d-%m-%Y.%H:%M')" >> $GITHUB_ENV
-      # if: env.PR_RELEASE_LABEL > 0
+      # if: env.PR_RELEASE_LABEL > 0 
 
     - name: Create Release
       id: create_release
@@ -48,9 +49,12 @@ jobs:
           2. Objetivo
             Esse Release tem como objetivo realizar melhorias no projeto novato-dev. Visamos obter impactos positivos,
             ganho de performance e inovação nessa versão. Para saber mais clique no link abaixo:
+            Release: ${{ env.PR_URL }}
         draft: false
         prerelease: false
+      # if: env.PR_RELEASE_LABEL > 0 
     
+    - uses: actions/checkout@master
     - name: Send message telegram
       uses: appleboy/telegram-action@master
       with:
@@ -59,4 +63,4 @@ jobs:
         message: |
           Fala pessoal! Estou passando para avisar que um novo release do projeto novato-dev foi lançado #${{ env.PR_NUMBER }}. Para saber mais acesse o link abaixo:
           Release: ${{ env.PR_URL }}
-      # if: env.PR_RELEASE_LABEL > 0
+      # if: env.PR_RELEASE_LABEL > 0 
