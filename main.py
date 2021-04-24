@@ -1,10 +1,13 @@
 #!/usr/bin/env python
-
+import os
 import logging
+import dotenv
 
 from telegram.ext import Updater, CommandHandler
-
 from modulos.comandos.main import start, help_command
+
+# procura e carrega as variveis de um arquivo .env
+dotenv.load_dotenv(dotenv.find_dotenv())
 
 # Habilitar log
 logging.basicConfig(
@@ -20,7 +23,7 @@ def main() -> None:
     # token = arquivo.read()
     # arquivo.close()
 
-    updater = Updater("TOKEN")
+    updater = Updater(os.getenv("TELEGRAM_TOKEN"))
 
     # Criamdo o mensageiro
     dispatcher = updater.dispatcher

@@ -1,4 +1,5 @@
 JAVASCRIPT = {
+    "liguagem": "explicação da linguagem",
     "if/else":[
         "texto explicando o tópico",
         "exemplo de código"
