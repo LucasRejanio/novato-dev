@@ -61,6 +61,6 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-          Fala pessoal! Estou passando para avisar que um novo release (v${{ env.PR_NUMBER }}) do projeto novato-dev foi lançado. Para saber mais acesse o link abaixo:
-          Release: ${{ env.PR_URL }}
+          Fala pessoal! Estou passando para avisar que um novo release do projeto novato-dev foi lançado. Para saber mais acesse o link abaixo:
+          Release-${{ env.DATE_NOW }}: ${{ env.PR_URL }}
       # if: env.PR_RELEASE_LABEL > 0 
