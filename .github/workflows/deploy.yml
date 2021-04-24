@@ -6,7 +6,6 @@ on:
 
 jobs:
   deploy:
-    name: Create Release
     runs-on: ubuntu-20.04
 
     steps:
@@ -29,12 +28,12 @@ jobs:
     - name: Set timezone America/Sao_Paulo
       run: |
         sudo timedatectl set-timezone America/Sao_Paulo
-      if: env.PR_RELEASE_LABEL > 0
+      # if: env.PR_RELEASE_LABEL > 0
 
     - name: Get date-time
       run: |
         echo "DATE_NOW=$(date +'%d-%m-%Y.%H:%M')" >> $GITHUB_ENV
-      if: env.PR_RELEASE_LABEL > 0 
+      # if: env.PR_RELEASE_LABEL > 0
 
     - name: Create Release
       id: create_release
@@ -53,10 +52,10 @@ jobs:
             Release: ${{ env.PR_URL }}
         draft: false
         prerelease: false
-      if: env.PR_RELEASE_LABEL > 0 
+      # if: env.PR_RELEASE_LABEL > 0
     
-    - uses: actions/checkout@master
     - name: Send message telegram
+      uses: actions/checkout@master
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
@@ -64,4 +63,4 @@ jobs:
         message: |
           Fala pessoal! Estou passando para avisar que um novo release do projeto novato-dev foi lançado #${{ env.PR_NUMBER }}. Para saber mais acesse o link abaixo:
           Release: ${{ env.PR_URL }}
-      if: env.PR_RELEASE_LABEL > 0 
+      # if: env.PR_RELEASE_LABEL > 0
