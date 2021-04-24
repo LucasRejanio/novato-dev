@@ -1,0 +1,66 @@
+name: Deploy
+
+on:
+  push:
+    branchs: [ lr-teste-release ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: 8BitJonny/gh-get-current-pr@1.0.1
+      id: get-pull-request
+      with:
+        github-token: ${{ github.token }}
+    
+    - name: Get info of pull request
+      run: |
+        echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV \
+        && echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
+        && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
+        && echo "PR_RELEASE_LABEL=$(echo $pr | jq '.labels[] | select(.name == "release")' | wc -l )" >> $GITHUB_ENV
+      env:
+        pr: ${{ steps.get-pull-request.outputs.pr }}
+
+    - name: Set timezone America/Sao_Paulo
+      run: |
+        sudo timedatectl set-timezone America/Sao_Paulo
+      if: env.PR_RELEASE_LABEL > 0
+
+    - name: Get date-time
+      run: |
+        echo "DATE_NOW=$(date +'%d.%m.%Y-%H:%M')" >> $GITHUB_ENV
+      if: env.PR_RELEASE_LABEL > 0 
+
+    - name: Create Release
+      id: create_release
+      uses: zendesk/action-create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token  }}
+      with:
+        tag_name: v${{ env.PR_NUMBER }}
+        release_name: Release-${{ env.DATE_NOW }}
+        body: |
+          Release NovatoDev v${{ env.PR_NUMBER }}.
+          1. Data: ${{ env.DATE_NOW }}
+          2. Objetivo
+            Esse Release tem como objetivo realizar melhorias no projeto novato-dev. Visamos obter impactos positivos,
+            ganho de performance e inovação nessa versão. Para saber mais clique no link abaixo:
+            Release: ${{ env.PR_URL }}
+        draft: false
+        prerelease: false
+      if: env.PR_RELEASE_LABEL > 0
+    
+    - uses: actions/checkout@master
+    - name: Send message telegram
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          Fala pessoal! Estou passando para avisar que um novo release do projeto novato-dev foi lançado. Para saber mais acesse o link abaixo:
+          Release-${{ env.DATE_NOW }}: ${{ env.PR_URL }}
+      if: env.PR_RELEASE_LABEL > 0 

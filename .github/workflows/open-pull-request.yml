@@ -18,4 +18,17 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            New pull request #${{ github.event.number }} in the novato-dev repository by the user: ${{ github.event.pull_request.user.login }}
+            Um novo pull request #${{ github.event.number }} foi aberto no repositório do novato-dev pelo usuário: ${{ github.event.pull_request.user.login }}.
+            Quando tiver um tempinho corre lá pra fazer aquele famoso code review. Tenho certeza que vai gostar!
+
+      - uses: actions/github-script@v3
+        if: contains(github.head_ref, 'release-')
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['release']
+            })
