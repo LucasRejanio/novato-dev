@@ -22,16 +22,19 @@ jobs:
         echo "PR_URL=$(echo $pr | jq '.html_url' | sed 's/"//g')" >> $GITHUB_ENV \
         && echo "PR_NUMBER=$(echo $pr | jq '.number')" >> $GITHUB_ENV \
         && echo "PR_USER=$(echo $pr | jq '.user.login'| sed 's/"//g')" >> $GITHUB_ENV \
+        && echo "PR_RELEASE_LABEL=$(echo $pr | jq '.labels[] | select(.name == "release")' | wc -l )" >> $GITHUB_ENV
       env:
         pr: ${{ steps.get-pull-request.outputs.pr }}
 
     - name: Set timezone America/Sao_Paulo
       run: |
         sudo timedatectl set-timezone America/Sao_Paulo
+      if: env.PR_RELEASE_LABEL > 0
 
-    - name: Set $DATE_NOW
+    - name: Get date-time
       run: |
         echo "DATE_NOW=$(date +'%d-%m-%Y.%H:%M')" >> $GITHUB_ENV
+      if: env.PR_RELEASE_LABEL > 0 
 
     - name: Create Release
       id: create_release
@@ -42,21 +45,23 @@ jobs:
         tag_name: v${{ env.PR_NUMBER }}
         release_name: Release-${{ env.DATE_NOW }}
         body: |
-          Release NovatoBot v${{ env.PR_NUMBER }}.
+          Release NovatoDev v${{ env.PR_NUMBER }}.
           1. Data: ${{ env.DATE_NOW }}
           2. Objetivo
-            Esse Release tem como objetivo realizar melhorias no projeto novato-dev. visamos impactos,
-            melhorias e inovação. Para saber mais clique no link abaixo:
+            Esse Release tem como objetivo realizar melhorias no projeto novato-dev. Visamos obter impactos positivos,
+            ganho de performance e inovação nessa versão. Para saber mais clique no link abaixo:
             Release: ${{ env.PR_URL }}
         draft: false
         prerelease: false
+      if: env.PR_RELEASE_LABEL > 0 
     
-    # - uses: actions/checkout@master
-    # - name: Send message telegram
-    #   uses: appleboy/telegram-action@master
-    #   with:
-    #     to: ${{ secrets.TELEGRAM_TO }}
-    #     token: ${{ secrets.TELEGRAM_TOKEN }}
-    #     message: |
-    #       New release #${{ env.PR_NUMBER }} in the novato-dev repository by the user: ${{ env.PR_USER }}
-    #       pull request: ${{ env.PR_URL }}
+    - uses: actions/checkout@master
+    - name: Send message telegram
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          Fala pessoal! Estou passando para avisar que um novo release do projeto novato-dev foi lançado #${{ env.PR_NUMBER }}. Para saber mais acesse o link abaixo:
+          Release: ${{ env.PR_URL }}
+      if: env.PR_RELEASE_LABEL > 0 
