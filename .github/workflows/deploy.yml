@@ -55,7 +55,6 @@ jobs:
       # if: env.PR_RELEASE_LABEL > 0
     
     - name: Send message telegram
-      uses: actions/checkout@master
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
