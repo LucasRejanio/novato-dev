@@ -47,9 +47,9 @@ jobs:
           Release NovatoDev v${{ env.PR_NUMBER }}.
           1. Data: ${{ env.DATE_NOW }}
           2. Objetivo
-            Esse Release tem como objetivo realizar melhorias no projeto novato-dev. Visamos obter impactos positivos,
-            ganho de performance e inovação nessa versão. Para saber mais clique no link abaixo:
-            Release: ${{ env.PR_URL }}
+          Esse Release tem como objetivo realizar melhorias no projeto novato-dev. Visamos obter impactos positivos,
+          ganho de performance e inovação nessa versão. Para saber mais clique no link abaixo:
+          Release: ${{ env.PR_URL }}
         draft: false
         prerelease: false
       # if: env.PR_RELEASE_LABEL > 0
