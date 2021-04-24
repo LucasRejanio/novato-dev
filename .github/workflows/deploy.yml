@@ -54,7 +54,6 @@ jobs:
         prerelease: false
       if: env.PR_RELEASE_LABEL > 0
     
-    - uses: actions/checkout@master
     - name: Send message telegram
       uses: appleboy/telegram-action@master
       with:
