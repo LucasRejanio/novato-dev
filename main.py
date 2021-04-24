@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-
+import os
 import logging
 import dotenv
-import os
+
 from telegram.ext import Updater, CommandHandler
 from modulos.comandos.main import start, help_command
 
