@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branchs: [ lr-teste-release ]
+    branchs: [ main ]
 
 jobs:
   deploy:
@@ -33,7 +33,7 @@ jobs:
     - name: Get date-time
       run: |
         echo "DATE_NOW=$(date +'%d.%m.%Y-%H:%M')" >> $GITHUB_ENV
-      if: env.PR_RELEASE_LABEL > 0 
+      if: env.PR_RELEASE_LABEL > 0
 
     - name: Create Release
       id: create_release
@@ -54,7 +54,6 @@ jobs:
         prerelease: false
       if: env.PR_RELEASE_LABEL > 0
     
-    - uses: actions/checkout@master
     - name: Send message telegram
       uses: appleboy/telegram-action@master
       with:
@@ -63,4 +62,4 @@ jobs:
         message: |
           Fala pessoal! Estou passando para avisar que um novo release do projeto novato-dev foi lançado. Para saber mais acesse o link abaixo:
           Release-${{ env.DATE_NOW }}: ${{ env.PR_URL }}
-      if: env.PR_RELEASE_LABEL > 0 
+      if: env.PR_RELEASE_LABEL > 0
