@@ -52,7 +52,7 @@ jobs:
             Release: ${{ env.PR_URL }}
         draft: false
         prerelease: false
-      # if: env.PR_RELEASE_LABEL > 0 
+      # if: env.PR_RELEASE_LABEL > 0
     
     - uses: actions/checkout@master
     - name: Send message telegram
