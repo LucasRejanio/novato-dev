@@ -3,8 +3,8 @@ import os
 import logging
 import dotenv
 
-from telegram.ext import Updater, CommandHandler
-from modulos.comandos.main import start, help_command
+from telegram.ext import CallbackQueryHandler, CommandHandler, Updater
+from modulos.comandos.main import botao, iniciar, ajuda
 
 # procura e carrega as variveis de um arquivo .env
 dotenv.load_dotenv(dotenv.find_dotenv())
@@ -18,20 +18,17 @@ logger = logging.getLogger(__name__)
 
 
 def main() -> None:
-    # Criando o atualizador com o token do bot
-    # arquivo = open("token.txt")
-    # token = arquivo.read()
-    # arquivo.close()
 
     updater = Updater(os.getenv("TELEGRAM_TOKEN"))
 
-    # Criamdo o mensageiro
+    # Criando o mensageiro
     dispatcher = updater.dispatcher
 
-    dispatcher.add_handler(CommandHandler("start", start))
-    dispatcher.add_handler(CommandHandler("help", help_command))
+    dispatcher.add_handler(CommandHandler("start", iniciar))
+    dispatcher.add_handler(CallbackQueryHandler(botao))
+    dispatcher.add_handler(CommandHandler("help", ajuda))
 
-    # Start Bot
+    # Iniando bot
     updater.start_polling()
 
     updater.idle()
