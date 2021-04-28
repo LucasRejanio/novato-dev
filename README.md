@@ -2,6 +2,8 @@
 
 [![build](https://img.shields.io/wercker/build/wercker/go-wercker-api.svg)](https://github.com/LucasRejanio/chatbot-telegram/actions)
 
+![banner_novatodev](https://user-images.githubusercontent.com/52427398/116485616-093a2900-a862-11eb-99fe-d6fee3eaadb1.png)
+
 # @NovatoDev
 O @NovatoDev é um bot no Telegram que tem como objetivo auxiliar alunos iniciantes em programação. Nossa missão é orientar os primeiros passos dos nossos usuários nesse maravilhoso universo. Aqui, esclarecemos conceitos básicos como: preparação de ambiente (instalação), tipagem, operadores, variáveis, IF/ELSE e etc. Mediante a dúvida, retornamos a explicação, exemplos, cursos e a aplicação completa.
 
@@ -13,6 +15,8 @@ O @NovatoDev é um bot no Telegram que tem como objetivo auxiliar alunos inician
 
 ### Processo
 
+![processo](https://user-images.githubusercontent.com/52427398/116485787-76e65500-a862-11eb-9c81-a48f19b14966.png)
+
 ### Desenvolvimento
 
 ### Infraestrutura
@@ -23,7 +27,11 @@ Nossa infraestrutura procura utilizar as melhores práticas DevOps. Com conceito
 - [Notificação](#notificação)
 - [Deploy](#deploy)
 
-##### Fluxograma:
+##### Fluxograma
+
+No modelo abaixo é possível visualizar todo nosso processo de integração contínua. Utilizamos ferramentas e configurações do próprio git para nos auxiliar e deixar nosso projeto muito mais automatizado, prevenindo assim, erros manuais. Além é claro do aumento da produtividade operacional.
+
+![infraestrutura](https://user-images.githubusercontent.com/52427398/116484557-b1022780-a85f-11eb-8f4c-ab042bf0d329.png)
 
 ##### Notificação
 
