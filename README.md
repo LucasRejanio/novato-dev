@@ -5,7 +5,8 @@
 ![banner_novatodev](https://user-images.githubusercontent.com/52427398/116485616-093a2900-a862-11eb-99fe-d6fee3eaadb1.png)
 
 # @NovatoDev
-O @NovatoDev é um bot no Telegram que tem como objetivo auxiliar alunos iniciantes em programação. Nossa missão é orientar os primeiros passos dos nossos usuários nesse maravilhoso universo. Aqui, esclarecemos conceitos básicos como: preparação de ambiente (instalação), tipagem, operadores, variáveis, IF/ELSE e etc. Mediante a dúvida, retornamos a explicação, exemplos, cursos e a aplicação completa.
+
+O `@NovatoDev` é um bot no Telegram que tem como objetivo auxiliar alunos iniciantes em programação. Nossa missão é orientar os primeiros passos dos nossos usuários nesse maravilhoso universo. Aqui, esclarecemos conceitos básicos como: preparação de ambiente (instalação), tipagem, operadores, variáveis, IF/ELSE e etc. Mediante a dúvida, retornamos a explicação, exemplos, cursos e a aplicação completa.
 
 ## Sumário
 
@@ -15,9 +16,12 @@ O @NovatoDev é um bot no Telegram que tem como objetivo auxiliar alunos inician
 
 ### Processo
 
+A imagem abaixo descreve visualmente o processo da conversa. Desde da saudação do bot (Início), passando pelas opções de conteúdo e por fim, apresentando a escolha do usuário em finalizar a conversa ou retorno ao início. Esse processo tem como objetivo facilitar o entendimento acerca do funcionamento do `@NovatoDev` e mapear as saídas e opções à disposição do usuário final.
+
 ![processo](https://user-images.githubusercontent.com/52427398/116485787-76e65500-a862-11eb-9c81-a48f19b14966.png)
 
 ### Desenvolvimento
+[Em construção]
 
 ### Infraestrutura
 
@@ -29,7 +33,7 @@ Nossa infraestrutura procura utilizar as melhores práticas DevOps. Com conceito
 
 ##### Fluxograma
 
-No modelo abaixo é possível visualizar todo nosso processo de integração contínua. Utilizamos ferramentas e configurações do próprio git para nos auxiliar e deixar nosso projeto muito mais automatizado, prevenindo assim, erros manuais. Além é claro do aumento da produtividade operacional.
+No modelo abaixo é possível visualizar todo nosso processo de integração contínua. Utilizamos ferramentas e configurações do próprio github para nos auxiliar e deixar nosso projeto muito mais automatizado, prevenindo assim, erros manuais. Além é claro do aumento da produtividade operacional.
 
 ![infraestrutura](https://user-images.githubusercontent.com/52427398/116484557-b1022780-a85f-11eb-8f4c-ab042bf0d329.png)
 
@@ -42,4 +46,4 @@ Aplicação:
 ![telegramNotifications](https://user-images.githubusercontent.com/52427398/116475257-f7e82100-a84f-11eb-8b85-41b83d910498.png)
 
 ##### Deploy
-
+[Em construção]
