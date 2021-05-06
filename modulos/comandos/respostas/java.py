@@ -1,19 +1,20 @@
 JAVA = {
     "liguagem": "explicação da linguagem",
-    "if/else":[
-        "texto explicando o tópico",
-        "exemplo de código"
-    ],
+    "if/else":
+        """
+            if (expressão booleana) {
+                // bloco de código 1
+            } else {
+                // bloco de código 2
+            }
+        """,
     "do/while":[
-        "texto explicando o tópico",
         "exemplo de código"
     ],
     "variaveis":[
-        "texto explicando o tópico",
         "exemplo de código"
     ],
     "operador lógico":[
-        "texto explicando o tópico",
         "exemplo de código"
     ],
 }
