@@ -5,11 +5,29 @@ EXPLICACOES = {
         Se for falsa, executa as afirmações dentro de else.
     """,
     "hello_world":"""
-        Um "Olá , mundo !" geralmente é um programa de computador que emite ou exibe a mensagem " Hello , World !". 
-    Esse programa é muito simples na maioria das linguagens de programação e costuma ser usado para ilustrar a sintaxe básica de uma linguagem de programação. 
-    Freqüentemente, é o primeiro programa escrito por pessoas que estão aprendendo a codificar. """,
-    "variaveis":"exemplo de código",
-    "operadores_logicos":"exemplo de código",
+        Um "Olá , mundo !" geralmente é um programa de computador que emite ou exibe 
+        a mensagem " Hello , World !". Esse programa é muito simples na maioria das 
+        linguagens de programação e costuma ser usado para ilustrar a sintaxe básica 
+        de uma linguagem de programação. Freqüentemente, é o primeiro programa escrito 
+        por pessoas que estão aprendendo a codificar. 
+    """,
+    "variaveis":"""
+        Uma variável é um espaço na memória do computador destinado a um dado que 
+        é alterado durante a execução do algoritmo. Para funcionar corretamente, 
+        as variáveis precisam ser definidas por nomes e tipos, dependendo da linguagem.""",
+    "operadores_logicos":"""
+        As operações lógicas são ensinadas em vários cursos de tecnologia de diferentes 
+        formas, por exemplo, em cursos de eletrônica é ensinado portas lógicas, já em 
+        programação aprendemos os operadores lógicos. Mas no fundo é a mesma coisa e se 
+        você entender a ideia das operações lógicas você pode usar esse conhecimento em 
+        qualquer área da tecnologia.
+
+        Cada linguagem de programação tem uma forma de representar os operadores lógicos. 
+        A simbologia mais encontrada são:
+
+        AND, OR e NOT em linguagens como: Pascal, Visual Basic e SQL.
+        &&, || e ! em linguagens como: Java  e C#.
+    """,
     "operadores_relacionais":"exemplo de código",
     "tipagem":"exemplo de código",
     "operacoes_matematicas":"exemplo de código",

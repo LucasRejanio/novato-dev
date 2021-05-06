@@ -1,5 +1,5 @@
 JAVA = {
-    "liguagem": "explicação da linguagem",
+    "curiosidade": "explicação da linguagem",
     "if/else":
         """
             if (expressão booleana) {
