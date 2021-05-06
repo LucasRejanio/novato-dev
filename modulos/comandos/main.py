@@ -1,3 +1,4 @@
+from modulos.comandos.respostas.tratamento import filtra_resposta
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -38,7 +39,12 @@ def botao(update: Update, _: CallbackContext) -> None:
     # CallbackQueries need to be answered, even if no notification to the user is needed
     query.answer()
 
-    query.edit_message_text(text=f"Opção selecionada: {query.data}")
+    resposta = filtra_resposta(linguagem=query.data.lower(), conteudo="if/else")
+
+    query.edit_message_text(
+        text=f"{resposta['explicacao']}",
+        parse_mode=ParseMode.MARKDOWN_V2
+    )
 
 
 def ajuda(update: Update, _: CallbackContext) -> None:
