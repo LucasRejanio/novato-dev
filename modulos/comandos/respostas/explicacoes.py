@@ -28,9 +28,31 @@ EXPLICACOES = {
         AND, OR e NOT em linguagens como: Pascal, Visual Basic e SQL.
         &&, || e ! em linguagens como: Java  e C#.
     """,
-    "operadores_relacionais":"exemplo de código",
-    "tipagem":"exemplo de código",
-    "operacoes_matematicas":"exemplo de código",
-    "operador lógico":"exemplo de código",
+    "operadores_relacionais":"""
+        Operadores relacionais são utilizados para comparar valores, o resultado de uma 
+        expressão relacional é um valor booleano (VERDADEIRO ou FALSO). Os operadores 
+        relacionais são: igual(=), diferente (!=), maior (>), menor(<), maior ou igual >=), 
+        menor ou igual (<=). Não é necessário explicar cada um, pois eles são auto-explicativos. 
+        Mas para quem é iniciante em desenvolvimento de softwares algumas informações podem 
+        ser importantes, principalmente pelo fato de haver diferença entre linguagens de programação.
+    """,
+    "tipagem":"""
+        Popularmente as linguagens são classificadas pela sua tipagem, então linguagens 
+        estáticas formalmente são linguagem que possuem tipagem estática. E linguagens 
+        dinâmicas possuem tipagem dinâmica.
+
+        Linguagens com tipagem estática não permitem ao desenvolvedor alterar o tipo da 
+        variável depois de declarada (Exemplo: Java). Geralmente a verificação de tipo 
+        é feita em tempo de compilação. 
+        A tipagem dinâmica está ligado a habilidade da linguagem de programação em escolher 
+        o tipo de dado de acordo com o valor atribuído à variável em tempo de execução 
+        dinamicamente (Exemplo: PHP).
+    """,
+    "operacoes_matematicas":"""
+        Todo mundo já usou operadores aritméticos na escola! Nos primeiros anos de 
+        estudo aprendemos a fazer continhas de soma, subtração, multiplicação e divisão. 
+        Em algoritmos eles também são simples e têm a mesma simbologia em todas as 
+        linguagens de programação ( +, -, * e /).
+    """,
 
 }
