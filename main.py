@@ -3,8 +3,22 @@ import os
 import logging
 import dotenv
 
-from telegram.ext import CallbackQueryHandler, CommandHandler, Updater
-from modulos.comandos.main import botao, iniciar, ajuda
+from telegram.ext import (
+    Updater,
+    CommandHandler,
+    ConversationHandler,
+    CallbackQueryHandler,
+)
+from modulos.comandos.main import (
+    FINAL,
+    LINGUAGEM,
+    TOPICO,
+    cancelar,
+    escolher_linguagem,
+    escolher_topico,
+    final,
+    iniciar,
+)
 
 # procura e carrega as variveis de um arquivo .env
 dotenv.load_dotenv(dotenv.find_dotenv())
@@ -17,6 +31,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+
 def main() -> None:
 
     updater = Updater(os.getenv("TELEGRAM_TOKEN"))
@@ -24,9 +39,25 @@ def main() -> None:
     # Criando o mensageiro
     dispatcher = updater.dispatcher
 
-    dispatcher.add_handler(CommandHandler("start", iniciar))
-    dispatcher.add_handler(CallbackQueryHandler(botao))
-    dispatcher.add_handler(CommandHandler("help", ajuda))
+    # Criando conversa para adicionar ao mensageiro
+    conv_handler = ConversationHandler(
+        entry_points=[CommandHandler('inicio', iniciar)],
+        states={
+            TOPICO: [
+                CallbackQueryHandler(escolher_topico),
+            ],
+            LINGUAGEM:[
+                CallbackQueryHandler(escolher_linguagem)
+            ],
+            FINAL:[
+                CallbackQueryHandler(final)
+            ]
+        },
+        fallbacks=[CommandHandler('cancelar', cancelar)],
+    )
+
+
+    dispatcher.add_handler(conv_handler)
 
     # Iniando bot
     updater.start_polling()

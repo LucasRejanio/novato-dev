@@ -31,9 +31,9 @@ JAVASCRIPT = {
         """
             verdadeiro = True;
             falso = False;
-            ! Operador lógico NÃO 
+            ! Operador lógico NÃO
             || Operador lógico OU
-            && Operador lógico E 
+            && Operador lógico E
             console.log(verdadeiro && falso); E
             console.log(verdadeiro || falso); OU
         """,

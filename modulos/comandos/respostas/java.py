@@ -4,7 +4,7 @@ JAVA = {
             System.out.println("Hello World");
         }
     """,
-    "if/else":"""
+    "if_else":"""
             if (expressão booleana) {
                 // bloco de código 1
             } else {
