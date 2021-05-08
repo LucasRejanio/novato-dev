@@ -1,12 +1,12 @@
 name: Deploy
 
 on:
-  push:
-    branchs:
-      - main
+  pull_request:
+    types: [closed]
 
 jobs:
   deploy:
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'release')
     runs-on: ubuntu-20.04
 
     steps:
@@ -54,7 +54,16 @@ jobs:
         draft: false
         prerelease: false
       if: env.PR_RELEASE_LABEL > 0
-    
+
+    - name: Deploy from Heroku
+      uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "novato-dev"
+        heroku_email: ${{secrets.HEROKU_EMAIL}}
+        remote_branch: "main"
+      if: env.PR_RELEASE_LABEL > 0
+      
     - name: Send message telegram
       uses: appleboy/telegram-action@master
       with:
