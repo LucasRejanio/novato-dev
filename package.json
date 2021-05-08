@@ -11,6 +11,6 @@
         "telegraf": "^4.3.0"
     },
     "engines": {
-        "python": "3.8.5"
+        "python": "3.9.5"
     }
 }
