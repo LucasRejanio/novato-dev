@@ -1,8 +1,8 @@
 PYTHON = {
-    "hello_world": 
+    "hello_world":
         """
             print("Hello World")
-            Pouco né ? É só isso mesmo!   
+            Pouco né ? É só isso mesmo!
         """,
     "if/else":
         """
