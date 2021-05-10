@@ -47,7 +47,7 @@ Aplicação:
 
 ##### Deploy
 
-Realizar um deploy no Heroku é simples e tranquilo de se fazer. Exatamente por isso que decidimos automatizar esse processo junto com o lançamento de release. Basicamente utilizamos a actions oficial do Heroku, junto com as boas práticas de segurança do github para aplicar esse modelo.
+Realizar um deploy no Heroku é simples e tranquilo de se fazer. Exatamente por isso que decidimos automatizar esse processo junto com o lançamento de release. Basicamente utilizamos a actions oficial do Heroku, junto com as boas práticas de segurança do github para aplicar a step nesse modelo.
 
 - Actions: https://github.com/marketplace/actions/deploy-to-heroku
 
