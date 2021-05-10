@@ -6,7 +6,8 @@ PYTHON = {
         """,
     "if/else":
         """
-          Python não usa { } para separar os blocos de código, para separar corretamente é preciso identar corretamente as linhas seguindo os padrões da linguagem.
+          Python não usa { } para separar os blocos de código, para separar corretamente é preciso identar
+          corretamente as linhas seguindo os padrões da linguagem.
             if (expressão booleana):
                 // bloco de código 1
             else:
@@ -14,7 +15,8 @@ PYTHON = {
         """,
     "variaveis":
         """
-            Por convenção no Python a criação de variáveis é utilizando o snake case, onde todo o texto é em minúsculo e caso o nome da variável seja composto, os demais textos são separados por underline “_”
+            Por convenção no Python a criação de variáveis é utilizando o snake case, onde todo o texto é
+            em minúsculo e caso o nome da variável seja composto, os demais textos são separados por underline “_”
             numero = 1;
             nome = “Novato”;
             salario = 1235.5;
@@ -22,7 +24,8 @@ PYTHON = {
         """,
     "operadores_logicos":
         """
-            Aqui no Python o negócio é um pouco diferente também, no lugar de usar && e || para E e OU, nós utilizamos “and”, “or” e também existe o “not” que é para o não lógico
+            Aqui no Python o negócio é um pouco diferente também, no lugar de usar && e || para E e OU,
+            nós utilizamos “and”, “or” e também existe o “not” que é para o não lógico
             verdadeiro = True;
             falso = False;
             print(verdadeiro or falso); # True
@@ -42,11 +45,13 @@ PYTHON = {
         """,
     "curiosidades":
         """
-            A linguagem não recebeu esse nome por causa da espécie de serpente, mas sim do seriado de comédia da BBC Monty Python’s Flying Circus da qual Guido van Rossum, criador da linguagem, é um fã.
+            A linguagem não recebeu esse nome por causa da espécie de serpente, mas sim do seriado de comédia
+            da BBC Monty Python’s Flying Circus da qual Guido van Rossum, criador da linguagem, é um fã.
         """,
     "tipagem":
         """
-            Não é possível fazer operações entre tipos diferentes sem antes fazer um cast ( transformação do tipo), por exemplo:
+            Não é possível fazer operações entre tipos diferentes sem antes fazer um cast ( transformação do tipo),
+            por exemplo:
 
             nome = '11'
             print(1 + name)
@@ -81,13 +86,15 @@ PYTHON = {
         """,
     "curso":
         """
-            Essa dica é valiosa, se você curtiu o Python e deseja se tornar um PYTHONISTA raiz, segue um curso com muitaaaas aulas e uma excelente didatica:
+            Essa dica é valiosa, se você curtiu o Python e deseja se tornar um PYTHONISTA raiz, segue um curso
+            com muitaaaas aulas e uma excelente didatica:
             Curso inteiramente grátis e disponível na palma da sua mão. Acesse:
             https://youtube.com/playlist?list=PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6
         """,
     "instalacao":
         """
-            Caso tenha interesse em começar a escrever suas primeiras linhas de código em Python, segue um tutorial prático para instalação do Python: https://www.youtube.com/watch?v=VuKvR1J2LQE 
+            Caso tenha interesse em começar a escrever suas primeiras linhas de código em Python, segue um
+            tutorial prático para instalação do Python: https://www.youtube.com/watch?v=VuKvR1J2LQE
             Obs: Para quem utiliza Linux o Python já vem instalado por padrão na maioria das suas distribuições.
         """
 }

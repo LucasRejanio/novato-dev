@@ -36,14 +36,14 @@ JAVA = {
     "curiosidades": """
         Acho que essa você não sabia... Minecraft foi programado em Java !!!
         Um dos jogos mais populares feitos em Java que deixa a criançada simplesmente 
-        alucinada é o Minecraft! Sim, Minecraft foi feito em Java pela empresa Mojave em sua primeira 
-        e mais popular versão (antes de ser adquirido pela Microsoft). Além do jogo em si, os servidores 
-        que permitem jogos online multiplayer também foram desenvolvidos em Java, gerando uma experiência 
+        alucinada é o Minecraft! Sim, Minecraft foi feito em Java pela empresa Mojave em sua primeira
+        e mais popular versão (antes de ser adquirido pela Microsoft). Além do jogo em si, os servidores
+        que permitem jogos online multiplayer também foram desenvolvidos em Java, gerando uma experiência
         de mundo virtual compartilhado incrível.
 
         Ficou curioso e quer saber mais ? Acesse este blog da oracle com mais curiosidades sobre o Java
 
-        Link:https://blogs.oracle.com/oracle-brasil/4-curiosidades-sobre-java-para-o-desenvolvimento-de-jogos    
+        Link:https://blogs.oracle.com/oracle-brasil/4-curiosidades-sobre-java-para-o-desenvolvimento-de-jogos
     """,
     "tipagem": """
         Somente Estática
@@ -78,10 +78,10 @@ JAVA = {
         conhecimento nessa linguagem e se tornar um JAVEIRO. 
 
         Curso inteiramente grátis e disponível na palma da sua mão. 
-        Acesse: https://www.youtube.com/watch?v=sTX0UEplF54&list=PLHz_AreHm4dkI2ZdjTwZA4mPMxWTfNSpR 
+        Acesse: https://www.youtube.com/watch?v=sTX0UEplF54&list=PLHz_AreHm4dkI2ZdjTwZA4mPMxWTfNSpR
     """,
     "instalacao": """
         O java possui suas particularidades quanto a sua instalação, portanto nada 
-        melhor do que acompanhar um ótimo tutorial: https://www.youtube.com/watch?v=Cq7gdAVPlF4 
+        melhor do que acompanhar um ótimo tutorial: https://www.youtube.com/watch?v=Cq7gdAVPlF4
     """
 }
