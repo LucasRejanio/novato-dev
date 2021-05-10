@@ -8,7 +8,7 @@ JAVASCRIPT = {
         Para isso basta acessar o CONSOLE do seu navegador (tecla F12 no Google Chrome) e digite:
         alert("HELLO WORLD");
         """,
-    "if/else":
+    "if_else":
         """
             if (expressão booleana) {
                 // bloco de código 1

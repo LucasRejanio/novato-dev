@@ -4,7 +4,7 @@ PYTHON = {
             print("Hello World")
             Pouco né ? É só isso mesmo!
         """,
-    "if/else":
+    "if_else":
         """
           Python não usa { } para separar os blocos de código, para separar corretamente é preciso identar
           corretamente as linhas seguindo os padrões da linguagem.
