@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 def main() -> None:
 
-    updater = Updater(os.getenv("TELEGRAM_TOKEN"))
+    updater = Updater("1794849435:AAHpeZLTC6vVCaWtfb8oxMos9Z3AclBgv6Q")
 
     # Criando o mensageiro
     dispatcher = updater.dispatcher
