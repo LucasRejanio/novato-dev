@@ -33,7 +33,7 @@ JAVA = {
         valorA < valorB # menor
         valorA <= valorB # menor ou igual
     """,
-    "curiosidades": """
+    "curiosidade": """
         Acho que essa você não sabia... Minecraft foi programado em Java !!!
         Um dos jogos mais populares feitos em Java que deixa a criançada simplesmente 
         alucinada é o Minecraft! Sim, Minecraft foi feito em Java pela empresa Mojave em sua primeira

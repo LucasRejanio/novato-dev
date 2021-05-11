@@ -4,7 +4,7 @@ PYTHON = {
             print("Hello World")
             Pouco né ? É só isso mesmo!
         """,
-    "if/else":
+    "if_else":
         """
           Python não usa { } para separar os blocos de código, para separar corretamente é preciso identar
           corretamente as linhas seguindo os padrões da linguagem.
@@ -43,7 +43,7 @@ PYTHON = {
             valorA < valorB # menor
             valorA <= valorB # menor ou igual
         """,
-    "curiosidades":
+    "curiosidade":
         """
             A linguagem não recebeu esse nome por causa da espécie de serpente, mas sim do seriado de comédia
             da BBC Monty Python’s Flying Circus da qual Guido van Rossum, criador da linguagem, é um fã.

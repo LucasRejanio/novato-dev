@@ -13,30 +13,63 @@ from modulos.comandos.respostas.tratamento import filtra_resposta
 
 
 
-TOPICO, LINGUAGEM, FINAL = range(3)
+ESCOLHA, LINGUAGEM, RESPOSTA = range(3)
 
 
 def iniciar(update: Update, _: CallbackContext) -> int:
+    usuario = update.effective_user
+
     keyboard = [
         [
-            InlineKeyboardButton("Sim", callback_data="Sim"),
-            InlineKeyboardButton("Bora", callback_data="Bora"),
-            InlineKeyboardButton("Claro", callback_data="Claro"),
+            InlineKeyboardButton("Aprenda mais!", callback_data="aprender"),
+        ],
+        [
+            InlineKeyboardButton(text="Teste seus conhecimentos", callback_data="teste"),
         ]
     ]
+
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text("Olá !! Sou o NovatoDev !", reply_markup=reply_markup)
+    update.message.reply_text(
+        f"""Olá {usuario.name}, sou o NovatoDev! 🚀 💻
+        Aqui irei te ajudar com dúvidas básicas sobre o universo da programação, além de testar seu conhecimento!
+        Vamos começar?
 
-    return TOPICO
+        Para ver meus outros comandos digite /help
+        """,
+        reply_markup=reply_markup
+    )
+
+    return ESCOLHA
 
 
 def cancelar(update: Update, _: CallbackContext) -> int:
     update.message.reply_text(
-        'Tchau! Espero que tenha aprendido muito !!!.', reply_markup=ReplyKeyboardRemove()
+        'Até  mais, espero que tenha aprendido muito!.🖖', reply_markup=ReplyKeyboardRemove()
     )
 
     return ConversationHandler.END
+
+def ajudar(update: Update, _: CallbackContext) -> int:
+    update.message.reply_text(
+        """
+        Comandos disponíveis:
+        /cancelar  -> finaliza a conversa comigo 😢
+        /voltar -> reinicia a conversa
+        """,
+        reply_markup=ReplyKeyboardRemove()
+    )
+
+
+def teste_de_conhecimento(update: Update, _: CallbackContext) -> int:
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(
+        'Testes em construção, inicie o bot novamente com /start '
+    )
+
+    return ConversationHandler.END
+
 
 
 def escolher_topico(update: Update, _: CallbackContext) -> None:
@@ -55,6 +88,18 @@ def escolher_topico(update: Update, _: CallbackContext) -> None:
         [
             InlineKeyboardButton("Váriaveis", callback_data='variaveis'),
             InlineKeyboardButton("Operadores Lógicos", callback_data='operadores_logicos')
+        ],
+        [
+            InlineKeyboardButton("Oper. Relacionais", callback_data='operadores_relacionais'),
+            InlineKeyboardButton("Tipagem", callback_data='tipagem')
+        ],
+        [
+            InlineKeyboardButton("Oper. Matemáticas", callback_data='operacoes_matematicas'),
+            InlineKeyboardButton("Instalação", callback_data='instalacao'),
+        ],
+        [
+            InlineKeyboardButton("Curiosidade", callback_data='curiosidade'),
+            InlineKeyboardButton("Curso", callback_data='curso'),
         ],
     ]
 
@@ -96,9 +141,9 @@ def escolher_linguagem(update: Update, context: CallbackContext) -> None:
         reply_markup=teclado_com_opcoes
     )
 
-    return FINAL
+    return RESPOSTA
 
-def final(update: Update, context: CallbackContext) -> None:
+def resposta(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
 
     # CallbackQueries need to be answered, even if no notification to the user is needed
@@ -106,7 +151,7 @@ def final(update: Update, context: CallbackContext) -> None:
 
     context.user_data["linguagem"] = query.data.lower()
 
-    resposta = filtra_resposta(
+    resposta_final = filtra_resposta(
         linguagem=context.user_data["linguagem"],
         conteudo=context.user_data["topico"]
     )
@@ -114,11 +159,12 @@ def final(update: Update, context: CallbackContext) -> None:
     query.edit_message_text(
         text=f"""
            Explicação: 
-           {resposta['explicacao']}
+           {resposta_final['explicacao']}
 
            Exemplo:
-           {resposta['exemplo']}
+           {resposta_final['exemplo']}
+
+
+           Se você está com sede de conhecimento, use o comando /voltar e retorne para o ínicio!
         """
     )
-
-    return ConversationHandler.END
