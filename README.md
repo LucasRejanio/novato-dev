@@ -46,4 +46,20 @@ Aplicação:
 ![telegramNotifications](https://user-images.githubusercontent.com/52427398/116475257-f7e82100-a84f-11eb-8b85-41b83d910498.png)
 
 ##### Deploy
-[Em construção]
+
+Realizar um deploy no Heroku é simples e tranquilo de se fazer. Exatamente por isso que decidimos automatizar esse processo junto com o lançamento de release. Basicamente utilizamos a actions oficial do Heroku, junto com as boas práticas de segurança do github para aplicar a step nesse modelo.
+
+- Actions: https://github.com/marketplace/actions/deploy-to-heroku
+
+##### Aplicação:  
+
+```yml
+    - name: Deploy from Heroku
+      uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "novato-dev"
+        heroku_email: ${{secrets.HEROKU_EMAIL}}
+        remote_branch: "main"
+      if: env.PR_RELEASE_LABEL > 0
+```
