@@ -24,6 +24,7 @@ def filtra_resposta(linguagem: str, conteudo: str) -> Dict[str, str]:
 
 
 def monta_resposta(linguagem: Dict[str, str], conteudo: str) -> Dict[str, str]:
+
     resposta = {
         "explicacao": EXPLICACOES[conteudo],
         "exemplo": linguagem[conteudo],

@@ -54,5 +54,7 @@ EXPLICACOES = {
         Em algoritmos eles também são simples e têm a mesma simbologia em todas as 
         linguagens de programação ( +, -, * e /).
     """,
-
+    "curso": """Indicação de cursos.""",
+    "instalacao": """Preparação do ambiente.""",
+    "curiosidade": """Curiosidade sobre a linguagem.""",
 }

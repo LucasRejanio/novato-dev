@@ -10,14 +10,16 @@ from telegram.ext import (
     CallbackQueryHandler,
 )
 from modulos.comandos.main import (
-    FINAL,
+    ESCOLHA,
+    RESPOSTA,
     LINGUAGEM,
-    TOPICO,
+    ajudar,
     cancelar,
     escolher_linguagem,
     escolher_topico,
-    final,
+    resposta,
     iniciar,
+    teste_de_conhecimento,
 )
 
 # procura e carrega as variveis de um arquivo .env
@@ -40,24 +42,29 @@ def main() -> None:
     dispatcher = updater.dispatcher
 
     # Criando conversa para adicionar ao mensageiro
-    conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('inicio', iniciar)],
+    conversa_handler = ConversationHandler(
+        entry_points=[CommandHandler('start', iniciar)],
         states={
-            TOPICO: [
-                CallbackQueryHandler(escolher_topico),
+            ESCOLHA:[
+                CallbackQueryHandler(escolher_topico, pattern='^' + "aprender" + '$'),
+                CallbackQueryHandler(teste_de_conhecimento, pattern='^' + "teste" + '$'),
             ],
             LINGUAGEM:[
                 CallbackQueryHandler(escolher_linguagem)
             ],
-            FINAL:[
-                CallbackQueryHandler(final)
+            RESPOSTA:[
+                CallbackQueryHandler(resposta)
             ]
         },
-        fallbacks=[CommandHandler('cancelar', cancelar)],
+        fallbacks=[
+            CommandHandler('cancelar', cancelar),
+            CommandHandler('voltar', iniciar),
+            CommandHandler('help', ajudar),
+        ],
     )
 
 
-    dispatcher.add_handler(conv_handler)
+    dispatcher.add_handler(conversa_handler)
 
     # Iniando bot
     updater.start_polling()
