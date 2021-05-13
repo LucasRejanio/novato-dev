@@ -31,13 +31,16 @@ def iniciar(update: Update, _: CallbackContext) -> int:
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     update.message.reply_text(
-        f"""Olá {usuario.name}, sou o NovatoDev! 🚀 💻
-        Aqui irei te ajudar com dúvidas básicas sobre o universo da programação, além de testar seu conhecimento!
-        Vamos começar?
+        f"""
+Olá {usuario.name}, sou o <b>NovatoDev!</b> 🚀 💻
 
-        Para ver meus outros comandos digite /help
+Aqui irei te ajudar com dúvidas básicas sobre o universo da programação, além de testar seu conhecimento!
+Vamos começar?
+
+Para ver meus outros comandos digite <b><u>/help</u></b>
         """,
-        reply_markup=reply_markup
+        reply_markup=reply_markup,
+        parse_mode=ParseMode.HTML,
     )
 
     return ESCOLHA
@@ -45,7 +48,7 @@ def iniciar(update: Update, _: CallbackContext) -> int:
 
 def cancelar(update: Update, _: CallbackContext) -> int:
     update.message.reply_text(
-        'Até  mais, espero que tenha aprendido muito!.🖖', reply_markup=ReplyKeyboardRemove()
+        'Até mais, espero que tenha aprendido muito! 🖖', reply_markup=ReplyKeyboardRemove()
     )
 
     return ConversationHandler.END
@@ -53,11 +56,13 @@ def cancelar(update: Update, _: CallbackContext) -> int:
 def ajudar(update: Update, _: CallbackContext) -> int:
     update.message.reply_text(
         """
-        Comandos disponíveis:
-        /cancelar  -> finaliza a conversa comigo 😢
-        /voltar -> reinicia a conversa
+Comandos disponíveis:
+
+<b><u>/cancelar</u>  -> </b> finaliza a conversa comigo 😢
+<b><u>/voltar</u> -> </b> reinicia a conversa
         """,
-        reply_markup=ReplyKeyboardRemove()
+        reply_markup=ReplyKeyboardRemove(),
+        parse_mode=ParseMode.HTML
     )
 
 
@@ -65,7 +70,7 @@ def teste_de_conhecimento(update: Update, _: CallbackContext) -> int:
     query = update.callback_query
     query.answer()
     query.edit_message_text(
-        'Testes em construção, inicie o bot novamente com /start '
+        'Testes em construção, inicie o bot novamente com /start'
     )
 
     return ConversationHandler.END
@@ -107,10 +112,11 @@ def escolher_topico(update: Update, _: CallbackContext) -> None:
     teclado_com_opcoes = InlineKeyboardMarkup(opcoes)
 
     query.edit_message_text(
-        fr'''Olá {usuario.name} \!
-           _*Escolhe ae*_:
+        f'''Olá {usuario.name} !
+
+<b>O que você deseja aprender?</b> 🧠
         ''',
-        parse_mode=ParseMode.MARKDOWN_V2,
+        parse_mode=ParseMode.HTML,
         reply_markup=teclado_com_opcoes
     )
 
@@ -158,13 +164,12 @@ def resposta(update: Update, context: CallbackContext) -> None:
 
     query.edit_message_text(
         text=f"""
-           Explicação: 
-           {resposta_final['explicacao']}
-
-           Exemplo:
-           {resposta_final['exemplo']}
-
-
-           Se você está com sede de conhecimento, use o comando /voltar e retorne para o ínicio!
-        """
+<b>Explicação:</b>
+    {resposta_final['explicacao']}
+<b>Exemplo:</b>
+    {resposta_final['exemplo']}
+<b>Se você está com sede de conhecimento, use o comando <u>/voltar</u> e retorne para o ínicio!</b>
+ 
+        """,
+        parse_mode=ParseMode.HTML,
     )
