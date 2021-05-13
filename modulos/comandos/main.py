@@ -48,7 +48,7 @@ Para ver meus outros comandos digite <b><u>/help</u></b>
 
 def cancelar(update: Update, _: CallbackContext) -> int:
     update.message.reply_text(
-        'Até  mais, espero que tenha aprendido muito! 🖖', reply_markup=ReplyKeyboardRemove()
+        'Até mais, espero que tenha aprendido muito! 🖖', reply_markup=ReplyKeyboardRemove()
     )
 
     return ConversationHandler.END
