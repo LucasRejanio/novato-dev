@@ -87,7 +87,7 @@ JAVASCRIPT = {
     "instalacao":
         """
     É amigos, JAVASCRIPT não exige instalação, por ser uma linguagem da web os navegadores são possuem formas de interpretá-lo , portanto é só sair codando.
-    
+
     Esse link vai te ajudar a entender: <a href="https://www.treinaweb.com.br/blog/como-executar-seu-primeiro-codigo-javascript">Instalação</a>
         """
 }
