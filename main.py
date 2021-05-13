@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# import os
+import os
 import logging
 import dotenv
 
@@ -34,7 +34,7 @@ logger = logging.getLogger(__name__)
 
 def main() -> None:
 
-    updater = Updater("1794849435:AAHpeZLTC6vVCaWtfb8oxMos9Z3AclBgv6Q")
+    updater = Updater(os.getenv('TELEGRAM_TOKEN'))
 
     # Criando o mensageiro
     dispatcher = updater.dispatcher
