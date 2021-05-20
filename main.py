@@ -9,18 +9,15 @@ from telegram.ext import (
     ConversationHandler,
     CallbackQueryHandler,
 )
+from modulos.comandos.main import ESCOLHA, QUIZ, RESPOSTA, LINGUAGEM, RESULTADO, TESTE
 from modulos.comandos.main import (
-    ESCOLHA,
-    RESPOSTA,
-    LINGUAGEM,
     ajudar,
     cancelar,
-    escolher_linguagem,
-    escolher_topico,
-    resposta,
     iniciar,
-    teste_de_conhecimento,
+    iniciar_quiz,
 )
+from modulos.comandos.aprendizagem import escolher_linguagem, escolher_topico, resposta
+from modulos.comandos.teste import primeira_pergunta, resposta_errada, resultado, segunda_pergunta, terceira_pergunta
 
 # procura e carrega as variveis de um arquivo .env
 dotenv.load_dotenv(dotenv.find_dotenv())
@@ -41,19 +38,38 @@ def main() -> None:
     # Criando o mensageiro
     dispatcher = updater.dispatcher
 
+    quiz_conv = ConversationHandler(
+        entry_points=[CallbackQueryHandler(primeira_pergunta, pattern='^' + "bora" + '$')],
+        states={
+            TESTE:[
+                CallbackQueryHandler(segunda_pergunta, pattern='^' + "2" + '$'),
+                CallbackQueryHandler(terceira_pergunta, pattern='^' + "3" + '$'),
+            ],
+            RESULTADO:[
+                CallbackQueryHandler(resultado),
+            ]
+        },
+        fallbacks=[
+            CallbackQueryHandler(resposta_errada, pattern='^' + "erro" + '$'),
+        ],
+    )
+
     # Criando conversa para adicionar ao mensageiro
     conversa_handler = ConversationHandler(
         entry_points=[CommandHandler('start', iniciar)],
         states={
             ESCOLHA:[
                 CallbackQueryHandler(escolher_topico, pattern='^' + "aprender" + '$'),
-                CallbackQueryHandler(teste_de_conhecimento, pattern='^' + "teste" + '$'),
+                CallbackQueryHandler(iniciar_quiz, pattern='^' + "teste" + '$'),
             ],
             LINGUAGEM:[
                 CallbackQueryHandler(escolher_linguagem)
             ],
             RESPOSTA:[
                 CallbackQueryHandler(resposta)
+            ],
+            QUIZ:[
+                quiz_conv
             ]
         },
         fallbacks=[

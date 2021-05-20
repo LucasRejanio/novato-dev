@@ -3,7 +3,7 @@ EXPLICACOES = {
     A condicional <u><b>if</b></u> é uma estrutura condicional que executa a afirmação, dentro do bloco, se determinada condição for verdadeira. Se for falsa, executa as afirmações dentro de <u><b>else</b></u>.
     """,
     "hello_world":"""
-    Um <u><b>"Olá , mundo !"</b></u> geralmente é um programa de computador que emite ou exibe a mensagem <u><b>"Hello , World !".</b></u> Esse programa é muito simples na maioria daslinguagens de programação e costuma ser usado para ilustrar a sintaxe básicade uma linguagem de programação. Frequentemente, é o primeiro programa escrito por pessoas que estão aprendendo a codificar.
+    Um <u><b>"Olá , mundo !"</b></u> geralmente é um programa de computador que emite ou exibe a mensagem <u><b>"Hello , World !".</b></u> Esse programa é muito simples na maioria das linguagens de programação e costuma ser usado para ilustrar a sintaxe básicade uma linguagem de programação. Frequentemente, é o primeiro programa escrito por pessoas que estão aprendendo a codificar.
     """,
     "variaveis":"""
     Uma variável é um <u><b>espaço na memória</b></u> do computador destinado a um dado que é alterado durante a execução do algoritmo. Para funcionar corretamente,as variáveis <u><b>precisam ser definidas por nomes e tipos, dependendo da linguagem</b></u>.
