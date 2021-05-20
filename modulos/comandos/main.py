@@ -10,9 +10,7 @@ from telegram.ext import (
 )
 from telegram import ParseMode
 
-ESCOLHA, LINGUAGEM, RESPOSTA, QUIZ = range(4)
-RESULTADO, TESTE, UM, DOIS, TRES, QUATRO, CINCO = range(7)
-
+RESULTADO, TESTE, ESCOLHA, LINGUAGEM, RESPOSTA, QUIZ = range(6)
 
 
 def iniciar(update: Update, _: CallbackContext) -> int:

@@ -17,7 +17,7 @@ from modulos.comandos.main import (
     iniciar_quiz,
 )
 from modulos.comandos.aprendizagem import escolher_linguagem, escolher_topico, resposta
-from modulos.comandos.teste import primeira_pergunta, resposta_errada, resultado, segunda_pergunta, terceira_pergunta
+from modulos.comandos.teste import primeira_pergunta, quarta_pergunta, quinta_pergunta, resposta_correta, resposta_errada, resultado, segunda_pergunta, sexta_pergunta, terceira_pergunta
 
 # procura e carrega as variveis de um arquivo .env
 dotenv.load_dotenv(dotenv.find_dotenv())
@@ -44,13 +44,17 @@ def main() -> None:
             TESTE:[
                 CallbackQueryHandler(segunda_pergunta, pattern='^' + "2" + '$'),
                 CallbackQueryHandler(terceira_pergunta, pattern='^' + "3" + '$'),
+                CallbackQueryHandler(quarta_pergunta, pattern='^' + "4" + '$'),
+                CallbackQueryHandler(quinta_pergunta, pattern='^' + "5" + '$'),
+                CallbackQueryHandler(sexta_pergunta, pattern='^' + "6" + '$'),
             ],
             RESULTADO:[
-                CallbackQueryHandler(resultado),
+                CallbackQueryHandler(resultado, pattern='^' + "0" + '$'),
             ]
         },
         fallbacks=[
             CallbackQueryHandler(resposta_errada, pattern='^' + "erro" + '$'),
+            CallbackQueryHandler(resposta_correta, pattern='^' + "acerto" + '$'),
         ],
     )
 
