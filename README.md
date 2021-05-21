@@ -8,6 +8,8 @@
 
 O `@NovatoDev` é um bot no Telegram que tem como objetivo auxiliar alunos iniciantes em programação. Nossa missão é orientar os primeiros passos dos nossos usuários nesse maravilhoso universo. Aqui, esclarecemos conceitos básicos como: preparação de ambiente (instalação), tipagem, operadores, variáveis, IF/ELSE e etc. Mediante a dúvida, retornamos a explicação, exemplos, cursos e a aplicação completa.
 
+https://user-images.githubusercontent.com/53834465/119207503-d7893c00-ba74-11eb-9917-3f6b8e589041.mp4
+
 ## Sumário
 
 - [Processo](#processo)
