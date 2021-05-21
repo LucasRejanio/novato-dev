@@ -1,6 +1,6 @@
 JAVASCRIPT = {
     "hello_world":"""
-    Javascript é famoso por sua simplicidade em aplicar e na facilidade de seu aprendizado,portanto com nosso Hello World não seria diferente. Você pode aplicá-lo agora mesmo pelo seu navegador !!! 
+    Javascript é famoso por sua simplicidade em aplicar e na facilidade de seu aprendizado,portanto com nosso Hello World não seria diferente. Você pode aplicá-lo agora mesmo pelo seu navegador! 
 
     Para isso basta acessar o CONSOLE do seu navegador (tecla F12 no Google Chrome) e digite:
     

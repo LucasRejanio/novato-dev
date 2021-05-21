@@ -1,8 +1,8 @@
 from typing import Dict
-from modulos.comandos.respostas.explicacoes import EXPLICACOES
-from modulos.comandos.respostas.python import PYTHON
-from modulos.comandos.respostas.java import JAVA
-from modulos.comandos.respostas.javascript import JAVASCRIPT
+from modulos.comandos.respostas.aprendizagem.explicacoes import EXPLICACOES
+from modulos.comandos.respostas.aprendizagem.python import PYTHON
+from modulos.comandos.respostas.aprendizagem.java import JAVA
+from modulos.comandos.respostas.aprendizagem.javascript import JAVASCRIPT
 
 
 def filtra_resposta(linguagem: str, conteudo: str) -> Dict[str, str]:
