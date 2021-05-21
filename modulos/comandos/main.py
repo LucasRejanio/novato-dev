@@ -81,7 +81,7 @@ def iniciar_quiz(update: Update, _: CallbackContext) -> None:
     teclado_com_opcoes = InlineKeyboardMarkup(opcoes)
 
     query.edit_message_text(
-        f'''Eae {usuario.name} !
+        f'''Eae {usuario.name}!
 
 <b>Pronto para iniciar o teste?</b> 🧠
         ''',

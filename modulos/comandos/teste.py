@@ -157,7 +157,7 @@ def resposta_errada(update: Update, context: CallbackContext) -> None:
     resposta_certa = PERGUNTAS[pergunta]['resposta']
 
     retornar_proxima_ou_resultado = "0" if context.chat_data["proxima_pergunta"] == 7 else context.chat_data["proxima_pergunta"]
-    finalizar_ou_bora = "Finalizar" if context.chat_data["proxima_pergunta"] == 7 else "Bora pra próxima"
+    finalizar_ou_bora = "Finalizar" if context.chat_data["proxima_pergunta"] == 7 else "Borá pra próxima"
 
     # Cria lista com as opções para escolher
     opcoes = [
@@ -172,9 +172,9 @@ def resposta_errada(update: Update, context: CallbackContext) -> None:
 
     query.edit_message_text(
         text=f"""
-        Puts resposta errada 
+Ah não 😫! Resposta errada. 
 
-        A correta era {resposta_certa}
+A resposta correta era: <u><b>{resposta_certa}</b></u>. Mas não desanime!
 
         """,
         parse_mode=ParseMode.HTML,
@@ -191,7 +191,7 @@ def resposta_correta(update: Update, context: CallbackContext) -> None:
 
     retornar_proxima_ou_resultado = "0" if context.chat_data["proxima_pergunta"] == 7 else context.chat_data["proxima_pergunta"]
 
-    finalizar_ou_bora = "Finalizar" if context.chat_data["proxima_pergunta"] == 7 else "Bora pra próxima"
+    finalizar_ou_bora = "Finalizar" if context.chat_data["proxima_pergunta"] == 7 else "Borá pra próxima"
 
     # Cria lista com as opções para escolher
     opcoes = [
@@ -206,7 +206,7 @@ def resposta_correta(update: Update, context: CallbackContext) -> None:
 
     query.edit_message_text(
         text="""
-        Boaaa !! Resposta correta !
+        Boa! Resposta correta!🎖
         """,
         parse_mode=ParseMode.HTML,
         reply_markup=teclado_com_opcoes
@@ -218,17 +218,25 @@ def resposta_correta(update: Update, context: CallbackContext) -> None:
 
 def resultado(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
-
     query.answer()
+
+    parabens = ""
 
     if query.data == '0' and context.chat_data["erro"] is False:
         context.chat_data["pontuacao"] += 1
 
+    if context.chat_data["pontuacao"] == 6:
+        parabens = """
+Parabéns você acertou tudo! Continue assim e você irá longe 🏆
+        """
+
     query.edit_message_text(
         text=f"""
-        Acabou !!!
+Fim do questionário!
+{parabens}
+Você acertou: {context.chat_data["pontuacao"]} 🎯
 
-        Você acertou {context.chat_data["pontuacao"]}
+<b>Se você está com sede de conhecimento, use o comando <u>/voltar</u> e retorne para o ínicio!</b>
 
         """,
         parse_mode=ParseMode.HTML,
