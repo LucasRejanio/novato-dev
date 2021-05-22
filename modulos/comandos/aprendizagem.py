@@ -46,7 +46,7 @@ def escolher_topico(update: Update, _: CallbackContext) -> None:
     teclado_com_opcoes = InlineKeyboardMarkup(opcoes)
 
     query.edit_message_text(
-        f'''Olá {usuario.name}!
+        f'''Olá {usuario.name} !
 
 <b>O que você deseja aprender?</b> 🧠
         ''',
@@ -77,7 +77,7 @@ def escolher_linguagem(update: Update, context: CallbackContext) -> None:
     teclado_com_opcoes = InlineKeyboardMarkup(opcoes)
 
     query.edit_message_text(
-        text=f"Boa! Você escolheu {query.data}, agora escolhe a linguagem",
+        text=f"Boa !! Você escolheu {query.data}, agora escolhe a linguagem !!",
         reply_markup=teclado_com_opcoes
     )
 
