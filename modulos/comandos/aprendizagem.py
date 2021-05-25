@@ -7,8 +7,8 @@ from telegram.ext import (
     CallbackContext,
 )
 from telegram import ParseMode
-from modulos.comandos.respostas.utils import TOPICOS_PARA_USUARIO, filtra_resposta
 from modulos.comandos.main import LINGUAGEM, RESPOSTA
+from modulos.comandos.respostas.utils import TOPICOS_PARA_USUARIO, filtra_resposta
 
 
 def escolher_topico(update: Update, _: CallbackContext) -> None:
