@@ -7,7 +7,7 @@ from telegram.ext import (
     CallbackContext,
 )
 from telegram import ParseMode
-from modulos.comandos.respostas.tratamento import filtra_resposta
+from modulos.comandos.respostas.utils import TOPICOS_PARA_USUARIO, filtra_resposta
 from modulos.comandos.main import LINGUAGEM, RESPOSTA
 
 
@@ -77,7 +77,7 @@ def escolher_linguagem(update: Update, context: CallbackContext) -> None:
     teclado_com_opcoes = InlineKeyboardMarkup(opcoes)
 
     query.edit_message_text(
-        text=f"Boa !! Você escolheu {query.data}, agora escolhe a linguagem !!",
+        text=f"Boa !! Você escolheu {TOPICOS_PARA_USUARIO[query.data]}, agora escolhe a linguagem !!",
         reply_markup=teclado_com_opcoes
     )
 

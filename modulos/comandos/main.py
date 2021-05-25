@@ -75,7 +75,7 @@ def iniciar_quiz(update: Update, _: CallbackContext) -> None:
     # Cria lista com as opções para escolher
     opcoes = [
         [
-            InlineKeyboardButton("BORA", callback_data='bora'),
+            InlineKeyboardButton("BÓRA", callback_data='bora'),
         ],
     ]
 
