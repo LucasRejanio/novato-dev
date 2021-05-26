@@ -55,9 +55,9 @@ def ajudar(update: Update, _: CallbackContext) -> int:
         """
 Comandos disponíveis:
 
-<b><u>/cancelar</u>  -> </b> Finaliza a conversa comigo 😢
+<b><u>/cancelar</u>  → </b> Finaliza a conversa comigo 😢
 
-<b><u>/voltar</u> -> </b> Reinicia a conversa
+<b><u>/voltar</u> → </b> Reinicia a conversa
 
         """,
         reply_markup=ReplyKeyboardRemove(),

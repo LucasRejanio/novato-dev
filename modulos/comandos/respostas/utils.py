@@ -6,16 +6,16 @@ from modulos.comandos.respostas.aprendizagem.javascript import JAVASCRIPT
 
 
 TOPICOS_PARA_USUARIO = {
-    "hello_world": "Hello World",
-    "if_else": "If/Else",
-    "variaveis": "Váriaveis",
-    "operadores_logicos": "Operadores Lógicos",
-    "operadores_relacionais": "Operadores Relacionais",
-    "tipagem": "Tipagem",
-    "operacoes_matematicas": "Operações Matemáticas",
-    "curso": "Curso",
-    "instalacao": "Instalação",
-    "curiosidade": "Curiosidade",
+    "hello_world": "<u><b>Hello World</b></u>",
+    "if_else": "<u><b>If/Else</b></u>",
+    "variaveis": "<u><b>Variáveis</b></u>",
+    "operadores_logicos": "<u><b>Operadores Lógicos</b></u>",
+    "operadores_relacionais": "<u><b>Operadores Relacionais</b></u>",
+    "tipagem": "<u><b>Tipagem</b></u>",
+    "operacoes_matematicas": "<u><b>Operações Matemáticas</b></u>",
+    "curso": "<u><b>Curso</b></u>",
+    "instalacao": "<u><b>Instalação</b></u>",
+    "curiosidade": "<u><b>Curiosidade</b></u>",
 }
 
 

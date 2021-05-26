@@ -25,7 +25,7 @@ def escolher_topico(update: Update, _: CallbackContext) -> None:
             InlineKeyboardButton("If/Else", callback_data='if_else'),
         ],
         [
-            InlineKeyboardButton("Váriaveis", callback_data='variaveis'),
+            InlineKeyboardButton("Variáveis", callback_data='variaveis'),
             InlineKeyboardButton("Operadores Lógicos", callback_data='operadores_logicos')
         ],
         [
@@ -78,7 +78,8 @@ def escolher_linguagem(update: Update, context: CallbackContext) -> None:
 
     query.edit_message_text(
         text=f"Boa !! Você escolheu {TOPICOS_PARA_USUARIO[query.data]}, agora escolhe a linguagem !!",
-        reply_markup=teclado_com_opcoes
+        reply_markup=teclado_com_opcoes,
+        parse_mode=ParseMode.HTML,
     )
 
     return RESPOSTA
