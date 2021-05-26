@@ -55,9 +55,9 @@ def ajudar(update: Update, _: CallbackContext) -> int:
         """
 Comandos disponíveis:
 
-<b><u>/cancelar</u>  -> </b> Finaliza a conversa comigo 😢
+<b><u>/cancelar</u>  → </b> Finaliza a conversa comigo 😢
 
-<b><u>/voltar</u> -> </b> Reinicia a conversa
+<b><u>/voltar</u> → </b> Reinicia a conversa
 
         """,
         reply_markup=ReplyKeyboardRemove(),
@@ -75,7 +75,7 @@ def iniciar_quiz(update: Update, _: CallbackContext) -> None:
     # Cria lista com as opções para escolher
     opcoes = [
         [
-            InlineKeyboardButton("BORA", callback_data='bora'),
+            InlineKeyboardButton("BÓRA", callback_data='bora'),
         ],
     ]
 

@@ -7,8 +7,8 @@ from telegram.ext import (
     CallbackContext,
 )
 from telegram import ParseMode
-from modulos.comandos.respostas.tratamento import filtra_resposta
 from modulos.comandos.main import LINGUAGEM, RESPOSTA
+from modulos.comandos.respostas.utils import TOPICOS_PARA_USUARIO, filtra_resposta
 
 
 def escolher_topico(update: Update, _: CallbackContext) -> None:
@@ -25,7 +25,7 @@ def escolher_topico(update: Update, _: CallbackContext) -> None:
             InlineKeyboardButton("If/Else", callback_data='if_else'),
         ],
         [
-            InlineKeyboardButton("Váriaveis", callback_data='variaveis'),
+            InlineKeyboardButton("Variáveis", callback_data='variaveis'),
             InlineKeyboardButton("Operadores Lógicos", callback_data='operadores_logicos')
         ],
         [
@@ -77,8 +77,9 @@ def escolher_linguagem(update: Update, context: CallbackContext) -> None:
     teclado_com_opcoes = InlineKeyboardMarkup(opcoes)
 
     query.edit_message_text(
-        text=f"Boa !! Você escolheu {query.data}, agora escolhe a linguagem !!",
-        reply_markup=teclado_com_opcoes
+        text=f"Boa !! Você escolheu {TOPICOS_PARA_USUARIO[query.data]}, agora escolhe a linguagem !!",
+        reply_markup=teclado_com_opcoes,
+        parse_mode=ParseMode.HTML,
     )
 
     return RESPOSTA
