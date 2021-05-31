@@ -23,7 +23,9 @@ A imagem abaixo descreve visualmente o processo da conversa. Desde da saudação
 ![processo](https://user-images.githubusercontent.com/52427398/116485787-76e65500-a862-11eb-9c81-a48f19b14966.png)
 
 ### Desenvolvimento
-[Em construção]
+
+No desenvolvimento do bot utilizamos a biblioteca [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot) que disponibiliza, por meio de classes, vários componentes já integrados com a API do Telegram, facilitando o desenvolvimento. Para fazer a leitura do arquivo `.env` do nosso token do bot, utilizamos a [python-dotenv](https://pypi.org/project/python-dotenv/) junto com a própria biblioteca do Python para ler a váriavel de ambiente.
+Para facilitar no desenvolvimento e ajudar a manter os padrões da linguagem foi utilizado o [pylint](https://pypi.org/project/pylint/).
 
 ### Infraestrutura
 
