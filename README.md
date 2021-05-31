@@ -12,15 +12,9 @@ https://user-images.githubusercontent.com/53834465/119207503-d7893c00-ba74-11eb-
 
 ## Sumário
 
-- [@NovatoDev](#novatodev)
-  - [Sumário](#sumário)
-    - [Processo](#processo)
-    - [Desenvolvimento](#desenvolvimento)
-    - [Infraestrutura](#infraestrutura)
-        - [Fluxograma](#fluxograma)
-        - [Notificação](#notificação)
-        - [Deploy](#deploy)
-        - [Aplicação:](#aplicação)
+- [Processo](#processo)
+- [Desenvolvimento](#desenvolvimento)
+- [Infraestrutura](#infraestrutura)
 
 ### Processo
 
@@ -29,6 +23,7 @@ A imagem abaixo descreve visualmente o processo da conversa. Desde da saudação
 ![processo](https://user-images.githubusercontent.com/52427398/116485787-76e65500-a862-11eb-9c81-a48f19b14966.png)
 
 ### Desenvolvimento
+
 No desenvolvimento do bot utilizamos a biblioteca [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot) que disponibiliza, por meio de classes, vários componentes já integrados com a API do Telegram, facilitando o desenvolvimento. Para fazer a leitura do arquivo `.env` do nosso token do bot, utilizamos a [python-dotenv](https://pypi.org/project/python-dotenv/) junto com a própria biblioteca do Python para ler a váriavel de ambiente.
 Para facilitar no desenvolvimento e ajudar a manter os padrões da linguagem foi utilizado o [pylint](https://pypi.org/project/pylint/).
 
@@ -36,15 +31,9 @@ Para facilitar no desenvolvimento e ajudar a manter os padrões da linguagem foi
 
 Nossa infraestrutura procura utilizar as melhores práticas DevOps. Com conceitos e processos bem aplicados em pipelines, testes automatizados, gerenciamento de confiabilidade e deploys automáticos.
 
-- [@NovatoDev](#novatodev)
-  - [Sumário](#sumário)
-    - [Processo](#processo)
-    - [Desenvolvimento](#desenvolvimento)
-    - [Infraestrutura](#infraestrutura)
-        - [Fluxograma](#fluxograma)
-        - [Notificação](#notificação)
-        - [Deploy](#deploy)
-        - [Aplicação:](#aplicação)
+- [Fluxograma](#fluxograma)
+- [Notificação](#notificação)
+- [Deploy](#deploy)
 
 ##### Fluxograma
 
